@@ -1,0 +1,16 @@
+body {
+  background-color: #e6f7ff;
+  background-image: url(images/body-background.jpg); 
+  background-image: url(images/body_background.png);
+}
+
+
+.jumbotron {
+  background-color: #80d4ff; }
+nav {
+	background-color: #80ff80;
+}
+#home-view {
+	float: left;
+	padding-right:20px;
+}

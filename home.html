@@ -1,0 +1,41 @@
+<div class="jumbotron text-center">
+    <h1><strong>The Customer Manager </strong> </h1>
+    <p> <strong> This application is designed to offer you the best <span class="text-danger">user experience</span> by raising the degree of <span class="text-danger">responsiveness </span> to best meet your needs </strong> </p>  
+
+    <a ui-sref=".list" class="btn btn-primary">List</a>
+    <a ui-sref=".paragraph" class="btn btn-primary">Paragraph</a>
+    <a ui-sref=".form" class="btn btn-primary">Form</a>
+    <a ui-sref=".jwt" class="btn btn-primary">JWT Auth.</a>
+</div>
+<div class="row">
+	<div id="home-view" class="large-4 medium-4 columns">
+			<h4> <strong> Side Navigation </strong> </h4>
+			<ul>
+			    <li > <a href="#"> Link One </a></li>
+			    <li > <a href="#"> Link Two </a></li>
+			    <li > Angular has become soo interesting to learn and use.gvj ,hbkhjvgmcfxdg nfcmhgvj,h bkxndgfchmgvjh</li>
+			</ul>
+
+	</div>
+
+	<div id="home-view" class="large-5 medium-5 columns" ui-view>fgtf</div>
+	<div id="home-view1" class="large-3 medium-3 columns" ng-controller="articleCtrl">
+		<h4> <strong> Filters &raquo; </strong> </h4>
+		<p> Using filter to limit the number of articles to display on userpage</p>
+		Number of articles to display: 
+		<input type="text" ng-model="numArticles" />
+
+	    <ul>
+	      <li ng-repeat="article in articles | limitTo:numArticles">
+	        {{article.title}}
+	      </li>
+	    </ul>
+	</div>
+	
+</div>
+<br>
+<hr>
+<div class="footer">
+
+<p> I'm in!!! &raquo; <span class="text-danger"> This shall include my foooter</span></p>
+</div>
