@@ -18,7 +18,34 @@
 
 	</div>
 
-	<div id="home-view" class="large-5 medium-5 columns" ui-view>fgtf</div>
+	<div id="home-view" class="large-5 medium-5 columns" ui-view>
+		<div class="large-12 medium-12 columns" ng-controller="MainCtrl as main">
+		    <h4> <strong>Login/Register</strong></h4>
+
+		    <input type="text" ng-model="username" placeholder="username"><br>
+		    <input type="password" ng-model="password" placeholder="password"><br>
+		    <br>
+		    <div style="padding-left:15px; padding-right:15px;">
+		        <div class="row">
+		            <button class="btn btn-success" ng-click="register()">Register</button>
+		            <button class="btn btn-success" ng-click="login()" style="float:right;">Login</button>
+		        </div>
+		        <br>
+		        <div class="row">
+		            <button class="btn btn-danger" ng-click="logout()">Logout</button>
+		            <button class="btn btn-primary" ng-click="getQuote()" style="float:right;">get quote</button>
+		        </div>
+		    </div>
+		    <br>
+		    {{ quote }}
+		    {{main.message}}
+
+		    <br>
+		  
+		    </div>
+
+
+	</div>
 	<div id="home-view1" class="large-3 medium-3 columns" ng-controller="articleCtrl">
 		<h4> <strong> Filters &raquo; </strong> </h4>
 		<p> Using filter to limit the number of articles to display on userpage</p>
