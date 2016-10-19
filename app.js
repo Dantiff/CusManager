@@ -11,25 +11,15 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: 'partials/home.html'
         })
-        
-        .state('home.list', {
-        url: '/list',
-        templateUrl: 'partials/list.html',
-        controller: function($scope) {
-            $scope.laptops = ['Acer Aspire Series', 'Apple MacBook', 'HP ElliteBook', 'Lenovo X Series', 'Samsung', 'Chrome Book'];
-        }
-        })
 
-  
         .state('home.paragraph', {
             url: '/paragraph',
             template: '<h3> <strong> Simple Angular Text </strong> </h3> </br> Angular has become soo interesting to learn and use. The situation is this, I am trying to use a PHP connection to connect my MySQL Database which is on phpmyadmin.'
         })
 
-        .state('home.form', {
-            url: '/form',
-            templateUrl: 'partials/form.html'
-        })
+        /**
+         * Registration and Login
+         */
         .state('home.register', {
             url: '/register',
             templateUrl: 'partials/register.html'
@@ -39,11 +29,32 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/login.html'
         })
 
+
+        /**
+         * Customers
+         */
+        .state('customers', {
+            url: '/customers',
+            templateUrl: 'allCustomers'
+        })
+
+        .state('customers.add_customer', {
+            url: '/customers',
+            templateUrl: 'customers/add_customer.html',
+            controller: function($scope) {
+                $scope.laptops = ['Acer Aspire Series', 'Apple MacBook', 'HP ElliteBook', 'Lenovo X Series', 'Samsung', 'Chrome Book'];
+            }
+        })
+
+        .state('customers.viewCustomer', {
+            url: '/customers',
+            templateUrl: 'customers/view_customer.html'
+        })
+
         .state('about', {
         url: '/about',
         views: {
 
-            
             '': { templateUrl: 'partials/about.html' },
 
            
@@ -148,8 +159,9 @@ jwt.factory('auth', function($http, API, $window){
     auth.register = function (username, password)
     {
         $http.post(API+'/auth/register', {username: username, password: password})
-        .then(function(response){
-            alert('user registered, Proceed to login');
+        .then(function($state){
+
+            alert('Registered successfully. Please proceed to login');
 
         }, function(response)
         {
@@ -199,7 +211,7 @@ jwt.controller('MainCtrl', function($scope, auth, API, $http, $log){
     {
         auth.register($scope.username, $scope.password);
 
-        $scope.$state.go("home.login");
+        // $scope.$state.go("home.login");
     }
 
     $scope.logout = function()
