@@ -1,17 +1,14 @@
 <div class="large-12 medium-12 columns" ng-controller="MainCtrl as main">
-    <h4> <strong>JWT Authentication</strong></h4>
-
+    <h4> <strong>Login</strong></h4>
+    <label>Username</label>
     <input type="text" ng-model="username" placeholder="username"><br>
+    <label>Password</label>
     <input type="password" ng-model="password" placeholder="password"><br>
     <br>
     <div style="padding-left:15px; padding-right:15px;">
         <div class="row">
-            <button class="btn btn-success" ng-click="register()">Register</button>
-            <button class="btn btn-success" ng-click="login()" style="float:right;">Login</button>
-        </div>
-        <br>
-        <div class="row">
-            <button class="btn btn-danger" ng-click="logout()">Logout</button>
+            <button class="btn btn-success" ng-click="login()" style="float:left;">Login</button>
+
             <button class="btn btn-primary" ng-click="getQuote()" style="float:right;">get quote</button>
         </div>
     </div>
@@ -20,5 +17,5 @@
     {{main.message}}
 
     <br>
-  
-    </div>
+
+</div>

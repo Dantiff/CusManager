@@ -9,12 +9,12 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
     
         .state('home', {
             url: '/home',
-            templateUrl: 'home.html'
+            templateUrl: 'partials/home.html'
         })
         
         .state('home.list', {
         url: '/list',
-        templateUrl: 'list.html',
+        templateUrl: 'partials/list.html',
         controller: function($scope) {
             $scope.laptops = ['Acer Aspire Series', 'Apple MacBook', 'HP ElliteBook', 'Lenovo X Series', 'Samsung', 'Chrome Book'];
         }
@@ -28,11 +28,15 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
 
         .state('home.form', {
             url: '/form',
-            templateUrl: 'form.html'
+            templateUrl: 'partials/form.html'
         })
-        .state('home.jwt', {
-            url: '/jwt',
-            templateUrl: 'jwt.html'
+        .state('home.register', {
+            url: '/register',
+            templateUrl: 'partials/register.html'
+        })
+        .state('home.login', {
+            url: '/login',
+            templateUrl: 'partials/login.html'
         })
 
         .state('about', {
@@ -40,7 +44,7 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
         views: {
 
             
-            '': { templateUrl: 'about.html' },
+            '': { templateUrl: 'partials/about.html' },
 
            
             'columnOne@about': { template: 'The first column in the footer!' },
@@ -79,6 +83,27 @@ jwt.controller('scotchController', function($scope) {
     
 });
 
+// Associate the $state variable with $rootScope in order to use it with any controller
+jwt.run(function ($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
+
+
+jwt.controller('indexController', function ($scope, $log) {
+
+    /* Check if the user is logged prior to use the next code */
+
+    if (!isLoggedUser) {
+        $log.log("user not logged, redirecting to Login view");
+        // Redirect to Login view
+        $scope.$state.go("home.login");
+    } else {
+        // Redirect to dashboard view
+        $scope.$state.go("home.list");
+    }
+
+});
 
 angular.module('jwt').controller('formCtrl', function($scope) {
   $scope.master = {};
@@ -92,6 +117,8 @@ $scope.user = angular.copy($scope.master);
 $scope.reset();
 });
 
+
+//The login/register controller
 jwt.constant('API', 'http://test-routes.herokuapp.com');
 
 jwt.config(function($httpProvider)
@@ -140,10 +167,8 @@ jwt.factory('auth', function($http, API, $window){
         $http.post(API+'/auth/login', {username: username, password: password})
         .then(function(response){
             $window.localStorage.setItem('token', response.data.token);
-                auth.logout = function()
-                    {
-                        $window.localStorage.removeItem('token');
-                    };
+
+            $state.go("home.list");
 
         }, function(response)
         {
@@ -151,20 +176,30 @@ jwt.factory('auth', function($http, API, $window){
         });
     };
 
-
+     auth.logout = function()
+     {
+         $window.localStorage.removeItem('token');
+         alert('Successfully logged out');
+     };
 
     return auth;    
 });
 
-jwt.controller('MainCtrl', function($scope, auth, API, $http){
+
+jwt.controller('MainCtrl', function($scope, auth, API, $http, $log){
+
 
     $scope.login = function(){
         auth.login($scope.username, $scope.password);
+
+        // $scope.$state.go("home.paragraph");
     };
 
     $scope.register = function()
     {
         auth.register($scope.username, $scope.password);
+
+        $scope.$state.go("home.login");
     }
 
     $scope.logout = function()
@@ -182,9 +217,8 @@ jwt.controller('MainCtrl', function($scope, auth, API, $http){
         });
     }
 
-
-
 });
+
 
 
 jwt.controller('articleCtrl', function($scope, pageSize) {

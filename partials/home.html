@@ -5,47 +5,45 @@
     <a ui-sref=".list" class="btn btn-primary">List</a>
     <a ui-sref=".paragraph" class="btn btn-primary">Paragraph</a>
     <a ui-sref=".form" class="btn btn-primary">Form</a>
-    <a ui-sref=".jwt" class="btn btn-primary">JWT Auth.</a>
+    <a ui-sref=".register" class="btn btn-primary">Register</a>
+	<a ui-sref=".login" class="btn btn-primary">Login</a>
 </div>
 <div class="row">
-	<div id="home-view" class="large-4 medium-4 columns">
+	<div id="home1-view" class="large-4 medium-4 columns">
 			<h4> <strong> Side Navigation </strong> </h4>
 			<ul>
 			    <li > <a href="#"> Link One </a></li>
 			    <li > <a href="#"> Link Two </a></li>
 			    <li > Angular has become soo interesting to learn and use.gvj ,hbkhjvgmcfxdg nfcmhgvj,h bkxndgfchmgvjh</li>
 			</ul>
-
 	</div>
 
 	<div id="home-view" class="large-5 medium-5 columns" ui-view>
 		<div class="large-12 medium-12 columns" ng-controller="MainCtrl as main">
-		    <h4> <strong>Login/Register</strong></h4>
+			<h4> <strong>Register</strong></h4>
+			<label>Username</label>
+			<input type="text" ng-model="username" placeholder="username"><br>
+			<label>Password</label>
+			<input type="password" ng-model="password" placeholder="password"><br>
+			<br>
+			<div style="padding-left:15px; padding-right:15px;">
+				<div class="row">
+					<button class="btn btn-success" ng-click="register()">Register</button>
+				</div>
+				<br>
+				<div class="row">
+					<p>Already registered? <a ui-sref=".login"> Go to Login</a></p>
+				</div>
+			</div>
+			<br>
+			{{ quote }}
+			{{main.message}}
 
-		    <input type="text" ng-model="username" placeholder="username"><br>
-		    <input type="password" ng-model="password" placeholder="password"><br>
-		    <br>
-		    <div style="padding-left:15px; padding-right:15px;">
-		        <div class="row">
-		            <button class="btn btn-success" ng-click="register()">Register</button>
-		            <button class="btn btn-success" ng-click="login()" style="float:right;">Login</button>
-		        </div>
-		        <br>
-		        <div class="row">
-		            <button class="btn btn-danger" ng-click="logout()">Logout</button>
-		            <button class="btn btn-primary" ng-click="getQuote()" style="float:right;">get quote</button>
-		        </div>
-		    </div>
-		    <br>
-		    {{ quote }}
-		    {{main.message}}
+			<br>
 
-		    <br>
-		  
-		    </div>
-
-
+		</div>
 	</div>
+
 	<div id="home-view1" class="large-3 medium-3 columns" ng-controller="articleCtrl">
 		<h4> <strong> Filters &raquo; </strong> </h4>
 		<p> Using filter to limit the number of articles to display on userpage</p>
