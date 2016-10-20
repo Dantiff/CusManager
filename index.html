@@ -23,10 +23,10 @@
 
     <!---ui-route file---->
     <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
-    <script src="angular-ui-router.min.js"></script>
+    <script src="js/angular/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="angular.js"></script>
-    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/angular.js"></script>
+    <script type="text/javascript" src="js/angular/angular.min.js"></script>
 
 </head>
 
@@ -45,15 +45,21 @@
             <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li><a ui-sref="home">Home</a></li>
-                    <li><a ui-sref="orders">Orders</a></li>
-                    <li>
-                        <a>Customers </a>
+                    <li class="has-dropdown">
+                        <a ui-sref="orders">Orders</a>
                         <ul class="menu vertical">
-                            <li> <a> All Customers </a> </li>
-                            <li> <a> Add Customer </a>  </li>
+                            <li> <a ui-sref="orders.allOrders"> All Orders </a> </li>
+                            <li> <a ui-sref="orders.addOrder"> Add Order </a>  </li>
                         </ul>
                     </li>
-                    <li><a ui-sref="about">About</a></li>
+                    <li>
+                        <a ui-sref="customers">Customers </a>
+                        <ul class="menu vertical">
+                            <li> <a ui-sref="customers.allCustomers"> All Customers </a> </li>
+                            <li> <a ui-sref="customers.addCustomer"> Add Customer </a>  </li>
+                        </ul>
+                    </li>
+                    <li><a ui-sref="home.about">About</a></li>
                 </ul>
             </div>
             <div class="top-bar-right">
@@ -63,7 +69,7 @@
                     <li class="has-dropdown">
                         <a> Account Manager </a>
                         <ul class="menu vertical">
-                            <li> <a> My Profile </a>  </li>
+                            <li> <a ui-sref="home.profile"> My Profile </a>  </li>
                             <li role="separator" class="divider"></li>
                             <li> <a ui-sref="home.login" ng-click="logout()"> Logout </a> </li>
 
@@ -80,7 +86,7 @@
 
 <div>
 
-    <div ui-view></div>
+    <div ui-view> </div>
 
 </div>
 

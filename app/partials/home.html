@@ -1,9 +1,13 @@
-<div class="jumbotron text-center">
-    <h1><strong>The Customer Manager </strong> </h1>
-    <p> <strong> This application is designed to offer you the best <span class="text-danger">user experience</span> by raising the degree of <span class="text-danger">responsiveness </span> to best meet your needs </strong> </p>
+
+<div class="row">
+	<div class="jumbotron text-center">
+		<h1><strong>The Customer Manager </strong> </h1>
+		<p> <strong> This application is designed to offer you the best <span class="text-danger">user experience</span> by raising the degree of <span class="text-danger">responsiveness </span> to best meet your needs </strong> </p>
+	</div>
+
 </div>
 <div class="row">
-	<div id="home1-view" class="large-4 medium-4 columns">
+	<div id="home1-view" class="large-3 medium-3 columns">
 			<h4> <strong> Side Navigation </strong> </h4>
 			<ul>
 			    <li > <a href="#"> Link One </a></li>
@@ -12,21 +16,19 @@
 			</ul>
 	</div>
 
-	<div id="home-view" class="large-5 medium-5 columns" ui-view>
+	<div id="home-view" class="large-6 medium-6 columns" ui-view>
 		<div class="large-12 medium-12 columns" ng-controller="MainCtrl as main">
 			<h4> <strong>Register</strong></h4>
 			<label>Username</label>
 			<input type="text" ng-model="username" placeholder="username"><br>
 			<label>Password</label>
 			<input type="password" ng-model="password" placeholder="password"><br>
-			<br>
+
 			<div style="padding-left:15px; padding-right:15px;">
 				<div class="row">
-					<button class="btn btn-success" ng-click="register()">Register</button>
-				</div>
-				<br>
-				<div class="row">
-					<p>Already registered? <a ui-sref=".login"> Go to Login</a></p>
+					<button class="success button" ng-click="register()" style="float: left">Register</button>
+
+					<p style="padding-top: 18px; padding-left: 80px;">Already registered? <a ui-sref=".login"> Go to Login</a></p>
 				</div>
 			</div>
 			<br>
@@ -39,23 +41,29 @@
 	</div>
 
 	<div id="home-view1" class="large-3 medium-3 columns" ng-controller="articleCtrl">
-		<h4> <strong> Filters &raquo; </strong> </h4>
-		<p> Using filter to limit the number of articles to display on userpage</p>
-		Number of articles to display: 
+		<h4> <strong> News &raquo; </strong> </h4>
+
+		Please select the number of news items to display:
 		<input type="text" ng-model="numArticles" />
 
-	    <ul>
+	    <ul class="li-none">
 	      <li ng-repeat="article in articles | limitTo:numArticles">
-	        {{article.title}}
+			  <a href="">
+				  &raquo; {{article.title}}
+			  </a>
 	      </li>
 	    </ul>
 	</div>
-	
+
 </div>
 <br>
 <hr>
 
 <div class="footer">
+	<div class="row">
 
-<p> I'm in!!! &raquo; <span class="text-danger"> This shall include my foooter</span></p>
+		<p> I'm in!!! &raquo; <span class="danger"> This shall include my foooter</span></p>
+
+	</div>
+
 </div>

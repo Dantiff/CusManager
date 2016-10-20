@@ -1,15 +1,17 @@
-var jwt = angular.module('jwt', ['ui.router']);
+var jwt = angular.module('jwt', ['ui.router', 'LocalStorageModule']);
 
 jwt.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/home');
     
     $stateProvider
-        
-    
+
+        /**
+         * Home
+         */
         .state('home', {
             url: '/home',
-            templateUrl: 'partials/home.html'
+            templateUrl: 'app/partials/home.html'
         })
 
         .state('home.paragraph', {
@@ -18,29 +20,40 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
         })
 
         /**
-         * Registration and Login
+         * Users
          */
+        .state('home.profile', {
+            url: '/profile',
+            templateUrl: 'partials/profile.html'
+        })
+
         .state('home.register', {
             url: '/register',
-            templateUrl: 'partials/register.html'
+            templateUrl: 'app/partials/register.html'
         })
         .state('home.login', {
             url: '/login',
-            templateUrl: 'partials/login.html'
+            templateUrl: 'app/partials/login.html'
         })
 
 
         /**
          * Customers
          */
+
         .state('customers', {
             url: '/customers',
-            templateUrl: 'allCustomers'
+            templateUrl: 'app/customers/allCustomers.html'
         })
 
-        .state('customers.add_customer', {
-            url: '/customers',
-            templateUrl: 'customers/add_customer.html',
+        .state('customers.allCustomers', {
+            url: '/allcustomers',
+            templateUrl: 'app/customers/allCustomers.html'
+        })
+
+        .state('customers.addCustomer', {
+            url: '/addcustomers',
+            templateUrl: 'app/customers/addCustomer.html',
             controller: function($scope) {
                 $scope.laptops = ['Acer Aspire Series', 'Apple MacBook', 'HP ElliteBook', 'Lenovo X Series', 'Samsung', 'Chrome Book'];
             }
@@ -48,26 +61,56 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
 
         .state('customers.viewCustomer', {
             url: '/customers',
-            templateUrl: 'customers/view_customer.html'
+            templateUrl: 'app/customers/view_customer.html'
         })
 
-        .state('about', {
-        url: '/about',
-        views: {
 
-            '': { templateUrl: 'partials/about.html' },
+        /**
+         * Orders
+         */
+        .state('orders', {
+            url: '/orders',
+            templateUrl: 'app/orders/allOrders.html'
+        })
 
-           
-            'columnOne@about': { template: 'The first column in the footer!' },
+        .state('orders.addOrder', {
+            url: '/addOrder',
+            templateUrl: 'app/orders/allOrders.html'
+        })
 
-           
-            'columnTwo@about': { 
-                templateUrl: 'table-data.html',
-                controller: 'scotchController'
-            }
-        }
-        
-    });
+
+        .state('orders.allOrders', {
+            url: '/allOrders',
+            templateUrl: 'app/orders/allOrders.html'
+        })
+
+
+        /**
+         * About Page
+         */
+        .state('home.about', {
+            url: '/about',
+            templateUrl: 'app/partials/about.html'
+        })
+
+    //
+    //     .state('about', {
+    //         url: '/about',
+    //     views: {
+    //
+    //         '': { templateUrl: 'partials/about.html' },
+    //
+    //
+    //         'columnOne@about': { template: 'The first column in the footer!' },
+    //
+    //
+    //         'columnTwo@about': {
+    //             templateUrl: 'table-data.html',
+    //             controller: 'scotchController'
+    //         }
+    //     }
+    //
+    // });
 
 }); 
 
