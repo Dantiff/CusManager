@@ -34,7 +34,7 @@
 <body ng-app="jwt">
 
 
-<div ng-controller="MainCtrl as main">
+<div>
     <div class="container">
         <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle></button>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="top-bar" id="example-menu">
-            <div class="top-bar-left">
+            <div class="top-bar-left" ng-controller="indexCtrl">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li><a ui-sref="home">Home</a></li>
                     <li class="has-dropdown">
@@ -62,7 +62,7 @@
                     <li><a ui-sref="home.about">About</a></li>
                 </ul>
             </div>
-            <div class="top-bar-right">
+            <div class="top-bar-right"  ng-controller="MainCtrl as main">
                 <ul class="dropdown menu" data-dropdown-menu="">
                     <li><a ui-sref="home.register">Register</a></li>
                     <li><a ui-sref="home.login">Login</a></li>
@@ -100,6 +100,9 @@
 <script src="js/vendor/foundation.reveal.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="node_modules/angular-local-storage/src/angular-local-storage.js"></script>
 
 <script>
     $(document).foundation();

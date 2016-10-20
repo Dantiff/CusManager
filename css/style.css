@@ -1,6 +1,5 @@
 body {
   background-color: #e6f7ff;
-  background-image: url(images/body-background.jpg); 
   background-image: url(images/body_background.png);
 }
 
@@ -23,5 +22,4 @@ nav {
 .login-buttons{
     padding-left:15px;
     padding-right:15px;
-    background-color: #80ff80;
 }

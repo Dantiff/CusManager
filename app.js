@@ -1,9 +1,11 @@
 var jwt = angular.module('jwt', ['ui.router', 'LocalStorageModule']);
 
-jwt.config(function($stateProvider, $urlRouterProvider) {
-    
+jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+
+    'use strict'
+
     $urlRouterProvider.otherwise('/home');
-    
+
     $stateProvider
 
         /**
@@ -91,28 +93,16 @@ jwt.config(function($stateProvider, $urlRouterProvider) {
         .state('home.about', {
             url: '/about',
             templateUrl: 'app/partials/about.html'
-        })
+        });
 
-    //
-    //     .state('about', {
-    //         url: '/about',
-    //     views: {
-    //
-    //         '': { templateUrl: 'partials/about.html' },
-    //
-    //
-    //         'columnOne@about': { template: 'The first column in the footer!' },
-    //
-    //
-    //         'columnTwo@about': {
-    //             templateUrl: 'table-data.html',
-    //             controller: 'scotchController'
-    //         }
-    //     }
-    //
-    // });
+    }])
 
-}); 
+    .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
+        localStorageServiceProvider
+            .setPrefix('myApp')
+            .setStorageType('sessionStorage')
+            .setNotify(true, true)
+    }]);
 
 
 
@@ -137,14 +127,16 @@ jwt.controller('scotchController', function($scope) {
     
 });
 
-// Associate the $state variable with $rootScope in order to use it with any controller
+/**
+ * Associate the $state variable with $rootScope in order to use it with any controller
+ */
 jwt.run(function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 });
 
 
-jwt.controller('indexController', function ($scope, $log) {
+jwt.controller('indexCtrl', function ($scope, $log) {
 
     /* Check if the user is logged prior to use the next code */
 
@@ -172,7 +164,9 @@ $scope.reset();
 });
 
 
-//The login/register controller
+/**
+ * The login/register controller
+ */
 jwt.constant('API', 'http://test-routes.herokuapp.com');
 
 jwt.config(function($httpProvider)
