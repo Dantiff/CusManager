@@ -1,4 +1,7 @@
-var jwt = angular.module('jwt', ['ui.router', 'LocalStorageModule']);
+var jwt = angular.module('jwt', [
+    'ui.router',
+    'LocalStorageModule'
+]);
 
 jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -106,27 +109,6 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 
-jwt.controller('scotchController', function($scope) {
-    
-    $scope.message = 'test';
-   
-    $scope.scotches = [
-        {
-            name: 'Macallan 12',
-            price: 50
-        },
-        {
-            name: 'Chivas Regal Royal Salute',
-            price: 10000
-        },
-        {
-            name: 'Glenfiddich 1937',
-            price: 20000
-        }
-    ];
-    
-});
-
 /**
  * Associate the $state variable with $rootScope in order to use it with any controller
  */
@@ -146,32 +128,20 @@ jwt.controller('indexCtrl', function ($scope, $log) {
         $scope.$state.go("home.login");
     } else {
         // Redirect to dashboard view
-        $scope.$state.go("home.list");
+        $scope.$state.go("orders");
     }
 
 });
 
-angular.module('jwt').controller('formCtrl', function($scope) {
-  $scope.master = {};
-
-  $scope.update = function(user) {
-  $scope.master = angular.copy(user);
-                        };
-$scope.reset = function() {
-$scope.user = angular.copy($scope.master);
-};
-$scope.reset();
-});
-
 
 /**
- * The login/register controller
+ * Sessions Service: Register, login, logout
  */
 jwt.constant('API', 'http://test-routes.herokuapp.com');
 
 jwt.config(function($httpProvider)
 {
-    
+
     $httpProvider.interceptors.push('jwtInterceptor');
 });
 
@@ -181,10 +151,10 @@ jwt.factory('jwtInterceptor', function($window){
         {
             var token = $window.localStorage.getItem('token');;
 
-            
+
             config.headers.Authorization = 'Bearer ' + token;
             return config;
-            
+
         }
 
     };
@@ -231,7 +201,7 @@ jwt.factory('auth', function($http, API, $window){
          alert('Successfully logged out');
      };
 
-    return auth;    
+    return auth;
 });
 
 
@@ -282,8 +252,8 @@ jwt.controller('articleCtrl', function($scope, pageSize) {
   ];
 
   $scope.numArticles = pageSize;
-});  
-jwt.value('pageSize', 4);  
+});
+jwt.value('pageSize', 4);
 
 
 
