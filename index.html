@@ -34,7 +34,7 @@
 <body ng-app="jwt">
 
 
-<div>
+<div ng-controller="MainCtrl as main">
     <div class="container">
         <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle></button>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="top-bar" id="example-menu">
-            <div class="top-bar-left" ng-controller="indexCtrl">
+            <div class="top-bar-left">
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li><a ui-sref="home">Home</a></li>
                     <li class="has-dropdown">
@@ -62,7 +62,7 @@
                     <li><a ui-sref="home.about">About</a></li>
                 </ul>
             </div>
-            <div class="top-bar-right"  ng-controller="MainCtrl as main">
+            <div class="top-bar-right">
                 <ul class="dropdown menu" data-dropdown-menu="">
                     <li><a ui-sref="home.register">Register</a></li>
                     <li><a ui-sref="home.login">Login</a></li>

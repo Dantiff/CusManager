@@ -2,7 +2,7 @@ var jwt = angular.module('jwt', ['ui.router', 'LocalStorageModule']);
 
 jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    'use strict'
+    'use strict';
 
     $urlRouterProvider.otherwise('/home');
 
