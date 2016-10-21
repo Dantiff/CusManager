@@ -148,25 +148,41 @@ jwt.factory('jwtInterceptor', function($window){
  * Sessions Service: JWT for register, login, logout
  */
 
-jwt.factory('auth', function($http, API, $window){
+jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
     var auth = {};
 
-    auth.register = function (username, password)
+
+    auth.register = function (username, password, onSuccess, onError)
     {
-        $http.post(API+'/auth/register', {username: username, password: password})
-            .then(function($state){
-
-                alert('Registered successfully. Please proceed to login');
-
-            }, function(response)
+        $http.post(API+'/auth/register',
             {
-                alert('PLease use a different username/password combination');
+                username: username,
+                password: password
+            })
+            .then(function(response) {
+
+                $window.localStorage.setItem('token', response.data.token);
+                onSuccess(response);
+
+            }, function(response) {
+
+                onError(response);
+
             });
     };
 
-    auth.getToken = function()
+    auth.getCurrentToken = function()
     {
         return $window.localStorage.getItem('token');
+    };
+
+
+    auth.checkIfLoggedIn = function()
+    {
+        if($window.localStorage.getItem('token'))
+            return true;
+        else
+            return false;
     };
 
     auth.login = function(username, password, onSuccess, onError)
@@ -192,11 +208,10 @@ jwt.factory('auth', function($http, API, $window){
     auth.logout = function()
     {
         $window.localStorage.removeItem('token');
-        alert('Successfully logged out');
     };
 
     return auth;
-});
+}]);
 
 
 
@@ -234,28 +249,46 @@ jwt.controller('indexCtrl', function ($scope, $log) {
 jwt.controller('MainCtrl', ['$scope', 'auth', 'API', '$http', '$location', function($scope, auth, API, $http, $location){
 
 
-    $scope.login = function(){
+    $scope.login = function()
+    {
         auth.login(
             $scope.username, $scope.password,
             function (response) {
+
                 $location.path('/orders');
             },
             function(response){
-                alert('Something went wrong with the login process. Try again later!');
+
+                alert('Wrong username/password combination! Please check and try again.');
             }
         );
     };
 
     $scope.register = function()
     {
-        auth.register($scope.username, $scope.password);
+        auth.register(
+            $scope.username, $scope.password,
+            function (response) {
 
-        // $scope.$state.go("home.login");
-    }
+                alert('Great! You are now signed in! Welcome, ' + $scope.username + '!');
+
+                $location.path('/home/login');
+            },
+            function(response){
+
+                alert('Username already taken! Please use a different username/password combination');
+            }
+
+
+        );
+    };
 
     $scope.logout = function()
     {
         auth.logout();
+
+        $location.path('/home/login');
+
     };
 
     $scope.getQuote = function()
@@ -267,6 +300,14 @@ jwt.controller('MainCtrl', ['$scope', 'auth', 'API', '$http', '$location', funct
 
             });
     }
+
+
+    $scope.name = '';
+    $scope.email = '';
+    $scope.password = '';
+
+    if(auth.checkIfLoggedIn())
+        $location.path('/home');
 
 }]);
 
@@ -298,12 +339,24 @@ jwt.controller('ordersCtrl', function ($scope) {
     $scope.create = function (response)
     {
         alert('You have created a new order');
-    }
+    };
 
     $scope.update = function(response)
     {
         alert('You have updated order details');
+    };
+
+
+
+    $scope.name = '';
+    $scope.email = '';
+    $scope.password = '';
+
+    if(auth.checkIfLoggedIn())
+    {
+        $location.path('/home');
     }
+
 
 });
 
