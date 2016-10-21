@@ -10,12 +10,12 @@
 
         <div >
             <p><input class="form-control" ng-model="currentorderTitle" placeholder="Title..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderAuthorName" placeholder="Author Name..." type="text"></p>
+            <p><input class="form-control" ng-model="currentorderAuthName" placeholder="Author Name..." type="text"></p>
             <p><input class="form-control" ng-model="currentorderDescription" placeholder="Description..." type="text"></p>
             <p><input class="form-control" ng-model="currentorderAmount" placeholder="Amount..." type="text"></p>
         </div>
         <div>
-            <button type="button" class="alert button" data-dismiss="modal">Close</button>
+            <button type="button" class="alert button" ng-click="delete()">Close</button>
             <button type="button" class="primary button" ng-click="create()">Save order</button>
         </div>
 

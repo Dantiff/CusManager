@@ -6,8 +6,14 @@
 
     <div>
 
-        <div class="pull-left"><button  type="button" class="radius success button" data-open="addOrderModal" >+ Add order</button></div>
-        <div class="pull-right"><button type="button" class="radius secondary button" ng-click="logout()">Logout!</button></div>
+        <div class="button-group">
+            <a ui-sref="orders.addOrder">
+                <span class="success button"> + Add order</span>
+            </a>
+            <a class="primary button radius">
+                My Orders
+            </a>
+        </div>
         <div class="clearfix"></div>
 
         <hr>
@@ -17,7 +23,7 @@
                 <p>You currently have <b>{{ orders.length }}</b> orders in your profile.</p>
                 <ul>
                     <li ng-repeat="order in orders">
-                        <b>{{ order.title }}</b> by <i>{{ order.owner_name }}</i> |
+                        <b>{{ order.title }}</b> by <i>{{ order.auth_name }}</i> |
                         <button ng-click="load(order.id)" class="primary button" data-open="updateOrderModal">Update</button>
                         <button ng-click="remove(order.id)" class="alert button">Remove</button>
                     </li>

@@ -100,6 +100,9 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
 }]);
 
 
+/**
+ * Orders service
+ */
 jwt.factory('ordersService', ['auth', 'localStorageService', function (auth, localStorageService) {
 
     ordersService.getAll = function (onSuccess, onError) {
@@ -109,11 +112,76 @@ jwt.factory('ordersService', ['auth', 'localStorageService', function (auth, loc
 
                 onSuccess(response);
 
-            }, function () {
+            }, function (response) {
 
                 onError(response);
             });
 
-    }
+    };
+
+    ordersService.getById = function (orderId, onSuccess, onError) {
+
+        localStorageService.one('orders').get()
+
+            .then(function (response) {
+
+                onSuccess(response);
+
+            }, function (response) {
+
+                onError(response);
+
+            });
+
+    };
+
+    ordersService.create = function (data, onSuccess, onError) {
+
+        localStorageService.all('orders').post(data)
+
+            .then(function (response) {
+
+                onSuccess(response);
+
+            }, function (response) {
+
+                onError(response);
+
+            });
+    };
+
+    ordersService.update = function (orderId, data, onSuccess, onError) {
+
+        localStorageService.one('orders').customPut(data, orderId)
+
+            .then(function (response) {
+
+                onSuccess(response);
+
+            }, function (response) {
+
+                onError(response);
+
+            });
+    };
+
+    ordersService.remove = function (orderId, onSuccess, onError) {
+
+        localStorageService.one('orders', orderId).remove()
+
+            .then(function (response) {
+
+                onSuccess(response);
+
+            }, function (response) {
+
+                onError(response);
+
+            });
+
+    };
+
+
+    localStorageService.setDefaultHeaders({ 'Authorization' : 'Bearer ' + auth.getCurrentToken() });
 
 }]);
