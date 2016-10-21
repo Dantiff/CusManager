@@ -27,7 +27,7 @@
 <body ng-app="jwt">
 
 
-<div >
+<div ng-controller="sessionsCtrl" >
     <div class="container">
         <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle></button>
@@ -55,10 +55,12 @@
                     <li><a ui-sref="home.about">About</a></li>
                 </ul>
             </div>
-            <div class="top-bar-right" id="navbar-right" ng-controller="MainCtrl as main">
+            <div class="top-bar-right" id="navbar-right" >
                 <ul class="dropdown menu" data-dropdown-menu="">
+
                     <li><a ui-sref="home.register">Register</a></li>
                     <li><a ui-sref="home.login">Login</a></li>
+
                     <li class="has-dropdown">
                         <a> Account Manager </a>
                         <ul class="menu vertical">
@@ -91,7 +93,7 @@
 <script src="js/angular/angular-ui-router.min.js"></script>
 <script type="text/javascript" src="js/angular/angular.js"></script>
 <script type="text/javascript" src="js/angular/angular.min.js"></script>
-<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="config.js"></script>
 <script type="text/javascript" src="scripts/mainService.js"></script>
 <script type="text/javascript" src="scripts/mainController.js"></script>
 

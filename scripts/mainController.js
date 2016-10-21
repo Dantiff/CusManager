@@ -1,21 +1,19 @@
 
 
-var jwtControllers = angular.module('jwtControllers', [
-    'jwtServices'
-]);
-
 /**
  * Associate the $state variable with $rootScope in order to use it with any controller
  */
-jwtControllers.run(function ($rootScope, $state, $stateParams) {
+jwt.run(function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 });
 
+
+
 /**
  * Sessions controller: Check Login
  */
-jwtControllers.controller('indexCtrl', function ($scope, $log) {
+jwt.controller('indexCtrl', function ($scope, $log) {
 
     /* Check if the user is logged prior to use the next code */
 
@@ -25,7 +23,7 @@ jwtControllers.controller('indexCtrl', function ($scope, $log) {
         $scope.$state.go("home.login");
     } else {
         // Redirect to dashboard view
-        $scope.$state.go("home.list");
+        $scope.$state.go("orders");
     }
 
 });
@@ -33,25 +31,49 @@ jwtControllers.controller('indexCtrl', function ($scope, $log) {
 /**
  * Sessions Controller: Register, login, logout
  */
-jwtControllers.controller('MainCtrl', function($scope, auth, API, $http, $log){
+jwt.controller('sessionsCtrl', ['$scope', 'auth', 'API', '$http', '$location', function($scope, auth, API, $http, $location){
 
 
-    $scope.login = function(){
-        auth.login($scope.username, $scope.password);
+    $scope.login = function()
+    {
+        auth.login(
+            $scope.username, $scope.password,
+            function (response) {
 
-        // $scope.$state.go("home.paragraph");
+                $location.path('/orders');
+            },
+            function(response){
+
+                alert('Wrong username/password combination! Please check and try again.');
+            }
+        );
     };
 
     $scope.register = function()
     {
-        auth.register($scope.username, $scope.password);
+        auth.register(
+            $scope.username, $scope.password,
+            function (response) {
 
-        // $scope.$state.go("home.login");
-    }
+                alert('Great! You are now signed in! Welcome, ' + $scope.username + '!');
+
+                $location.path('/home/login');
+            },
+            function(response){
+
+                alert('Username already taken! Please use a different username/password combination');
+            }
+
+
+        );
+    };
 
     $scope.logout = function()
     {
         auth.logout();
+
+        $location.path('/home/login');
+
     };
 
     $scope.getQuote = function()
@@ -59,18 +81,38 @@ jwtControllers.controller('MainCtrl', function($scope, auth, API, $http, $log){
         $http.get(API + '/auth/quote')
             .then(function(response){
                 $scope.quote = response.data.message;
-            }, function(){
-
+            }, function(response){
+                alert('You must be logged in to access this service');
             });
+    };
+
+
+    $scope.checkIfLoggedIn = function () {
+
+        if (auth.checkIfLoggedIn()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
+
+    $scope.username = '';
+    $scope.password = '';
+
+    if(!auth.checkIfLoggedIn())
+    {
+        $location.path('/home/login');
     }
 
-});
+}]);
 
 
 /**
  * News Articles Controller
  */
-jwtControllers.controller('articleCtrl', function($scope, pageSize) {
+jwt.controller('articleCtrl', function($scope, pageSize) {
     $scope.articles = [
         { title: "Arduino Tutorial" },
         { title: "After Effects Tutorial" },
@@ -83,6 +125,38 @@ jwtControllers.controller('articleCtrl', function($scope, pageSize) {
 
     $scope.numArticles = pageSize;
 });
-jwtControllers.value('pageSize', 4);
+jwt.value('pageSize', 4);
 
+
+/**
+ * Orders Controller
+ */
+jwt.controller('ordersCtrl', ['$scope', '$location', 'auth',  function ($scope, $location, auth) {
+
+    $scope.create = function (response)
+    {
+        alert('You have created a new order');
+    };
+
+    $scope.update = function(response)
+    {
+        alert('You have updated order details');
+    };
+
+    $scope.checkIfLoggedIn = function () {
+
+        auth.checkIfLoggedIn();
+    };
+
+
+    $scope.username = '';
+    $scope.password = '';
+
+
+    if(!auth.checkIfLoggedIn())
+    {
+        $location.path('/home/login');
+    }
+
+}]);
 

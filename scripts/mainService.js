@@ -1,14 +1,11 @@
 
 
-var jwtServices = angular.module('jwtServices');
-
-
 /**
  * JWT service
  */
-jwtServices.constant('API', 'http://test-routes.herokuapp.com');
+jwt.constant('API', 'http://test-routes.herokuapp.com');
 
-jwtServices.config(function($httpProvider)
+jwt.config(function($httpProvider)
 {
 
     $httpProvider.interceptors.push('jwtInterceptor');
@@ -17,7 +14,7 @@ jwtServices.config(function($httpProvider)
 /**
  * Capture jwt token and check authenticity during login jwtServices
  */
-jwtServices.factory('jwtInterceptor', function($window){
+jwt.factory('jwtInterceptor', function($window){
     return {
         request: function(config)
         {
@@ -37,46 +34,68 @@ jwtServices.factory('jwtInterceptor', function($window){
  * Sessions Service: JWT for register, login, logout
  */
 
-jwtServices.factory('auth', function($http, API, $window){
+jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
     var auth = {};
 
-    auth.register = function (username, password)
+
+    auth.register = function (username, password, onSuccess, onError)
     {
-        $http.post(API+'/auth/register', {username: username, password: password})
-            .then(function($state){
-
-                alert('Registered successfully. Please proceed to login');
-
-            }, function(response)
+        $http.post(API+'/auth/register',
             {
-                alert('PLease use a different username/password combination');
+                username: username,
+                password: password
+            })
+            .then(function(response) {
+
+                $window.localStorage.setItem('token', response.data.token);
+                onSuccess(response);
+
+            }, function(response) {
+
+                onError(response);
+
             });
     };
 
-    auth.getToken = function()
+    auth.getCurrentToken = function()
     {
         return $window.localStorage.getItem('token');
     };
 
-    auth.login = function(username, password)
+
+    auth.checkIfLoggedIn = function()
     {
-        $http.post(API+'/auth/login', {username: username, password: password})
-            .then(function(response){
-                $window.localStorage.setItem('token', response.data.token);
+        if($window.localStorage.getItem('token'))
+            return true;
+        else
+            return false;
+    };
 
-                $state.go("home.list");
-
-            }, function(response)
+    auth.login = function(username, password, onSuccess, onError)
+    {
+        $http.post(API+'/auth/login',
             {
-                alert('Plese use correct username/password combination');
+                username: username,
+                password: password
+            })
+            .then(function(response){
+
+                $window.localStorage.setItem('token', response.data.token);
+                onSuccess(response);
+
+            }, function(response) {
+
+                onError(response);
+
             });
+
     };
 
     auth.logout = function()
     {
         $window.localStorage.removeItem('token');
-        alert('Successfully logged out');
     };
 
     return auth;
-});
+}]);
+
