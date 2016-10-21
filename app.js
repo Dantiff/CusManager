@@ -78,17 +78,17 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'app/orders/allOrders.html'
         })
 
-        .state('orders.addOrder', {
-            url: '/addOrder',
-            templateUrl: 'app/orders/allOrders.html'
-        })
-
 
         .state('orders.allOrders', {
             url: '/allOrders',
             templateUrl: 'app/orders/allOrders.html'
         })
 
+
+        .state('orders.addOrder', {
+            url: '/addOrder',
+            templateUrl: 'app/orders/addOrder.html'
+        })
 
         /**
          * About Page
@@ -187,6 +187,8 @@ jwt.factory('auth', function($http, API, $window){
         .then(function(response){
             $window.localStorage.setItem('token', response.data.token);
 
+            alert('Login Successful');
+
             $state.go("home.list");
 
         }, function(response)
@@ -231,7 +233,8 @@ jwt.controller('MainCtrl', function($scope, auth, API, $http, $log){
         $http.get(API + '/auth/quote')
         .then(function(response){
             $scope.quote = response.data.message;
-        }, function(){
+        }, function(response){
+            alert('You must be logged in to access this service')
 
         });
     }
