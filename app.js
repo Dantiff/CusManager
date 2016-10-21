@@ -100,6 +100,10 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
     }])
 
+
+    /**
+     * Configure local storage module
+     */
     .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
         localStorageServiceProvider
             .setPrefix('myApp')
@@ -109,33 +113,9 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
 
-/**
- * Associate the $state variable with $rootScope in order to use it with any controller
- */
-jwt.run(function ($rootScope, $state, $stateParams) {
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-});
-
-
-jwt.controller('indexCtrl', function ($scope, $log) {
-
-    /* Check if the user is logged prior to use the next code */
-
-    if (!isLoggedUser) {
-        $log.log("user not logged, redirecting to Login view");
-        // Redirect to Login view
-        $scope.$state.go("home.login");
-    } else {
-        // Redirect to dashboard view
-        $scope.$state.go("orders");
-    }
-
-});
-
 
 /**
- * Sessions Service: Register, login, logout
+ * JWT service
  */
 jwt.constant('API', 'http://test-routes.herokuapp.com');
 
@@ -145,6 +125,9 @@ jwt.config(function($httpProvider)
     $httpProvider.interceptors.push('jwtInterceptor');
 });
 
+/**
+ * Capture jwt token and check authenticity during login jwtServices
+ */
 jwt.factory('jwtInterceptor', function($window){
     return {
         request: function(config)
@@ -160,20 +143,25 @@ jwt.factory('jwtInterceptor', function($window){
     };
 });
 
+
+/**
+ * Sessions Service: JWT for register, login, logout
+ */
+
 jwt.factory('auth', function($http, API, $window){
     var auth = {};
 
     auth.register = function (username, password)
     {
         $http.post(API+'/auth/register', {username: username, password: password})
-        .then(function($state){
+            .then(function($state){
 
-            alert('Registered successfully. Please proceed to login');
+                alert('Registered successfully. Please proceed to login');
 
-        }, function(response)
-        {
-            alert('PLease use a different username/password combination');
-        });
+            }, function(response)
+            {
+                alert('PLease use a different username/password combination');
+            });
     };
 
     auth.getToken = function()
@@ -181,39 +169,81 @@ jwt.factory('auth', function($http, API, $window){
         return $window.localStorage.getItem('token');
     };
 
-    auth.login = function(username, password)
+    auth.login = function(username, password, onSuccess, onError)
     {
-        $http.post(API+'/auth/login', {username: username, password: password})
-        .then(function(response){
-            $window.localStorage.setItem('token', response.data.token);
+        $http.post(API+'/auth/login',
+            {
+                username: username,
+                password: password
+            })
+            .then(function(response){
 
-            alert('Login Successful');
+                $window.localStorage.setItem('token', response.data.token);
+                onSuccess(response);
 
-            $state.go("home.list");
+            }, function(response) {
 
-        }, function(response)
-        {
-            alert('Plese use correct username/password combination');
-        });
+                onError(response);
+
+            });
+
     };
 
-     auth.logout = function()
-     {
-         $window.localStorage.removeItem('token');
-         alert('Successfully logged out');
-     };
+    auth.logout = function()
+    {
+        $window.localStorage.removeItem('token');
+        alert('Successfully logged out');
+    };
 
     return auth;
 });
 
 
-jwt.controller('MainCtrl', function($scope, auth, API, $http, $log){
+
+/**
+ * Associate the $state variable with $rootScope in order to use it with any controller
+ */
+jwt.run(function ($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
+
+
+
+/**
+ * Sessions controller: Check Login
+ */
+jwt.controller('indexCtrl', function ($scope, $log) {
+
+    /* Check if the user is logged prior to use the next code */
+
+    if (!isLoggedUser) {
+        $log.log("user not logged, redirecting to Login view");
+        // Redirect to Login view
+        $scope.$state.go("home.login");
+    } else {
+        // Redirect to dashboard view
+        $scope.$state.go("orders");
+    }
+
+});
+
+/**
+ * Sessions Controller: Register, login, logout
+ */
+jwt.controller('MainCtrl', ['$scope', 'auth', 'API', '$http', '$location', function($scope, auth, API, $http, $location){
 
 
     $scope.login = function(){
-        auth.login($scope.username, $scope.password);
-
-        // $scope.$state.go("home.paragraph");
+        auth.login(
+            $scope.username, $scope.password,
+            function (response) {
+                $location.path('/orders');
+            },
+            function(response){
+                alert('Something went wrong with the login process. Try again later!');
+            }
+        );
     };
 
     $scope.register = function()
@@ -231,35 +261,51 @@ jwt.controller('MainCtrl', function($scope, auth, API, $http, $log){
     $scope.getQuote = function()
     {
         $http.get(API + '/auth/quote')
-        .then(function(response){
-            $scope.quote = response.data.message;
-        }, function(response){
-            alert('You must be logged in to access this service')
+            .then(function(response){
+                $scope.quote = response.data.message;
+            }, function(){
 
-        });
+            });
     }
 
-});
+}]);
 
 
-
+/**
+ * News Articles Controller
+ */
 jwt.controller('articleCtrl', function($scope, pageSize) {
-  $scope.articles = [
-    { title: "Arduino Tutorial" },
-    { title: "After Effects Tutorial" },
-    { title: "Django Tutorial" },
-    { title: "Angular Tutorial" },
-    { title: "Laravel Tutorial" }
+    $scope.articles = [
+        { title: "Arduino Tutorial" },
+        { title: "After Effects Tutorial" },
+        { title: "Django Tutorial" },
+        { title: "Angular Tutorial" },
+        { title: "Laravel Tutorial" }
 
 
-  ];
+    ];
 
-  $scope.numArticles = pageSize;
+    $scope.numArticles = pageSize;
 });
 jwt.value('pageSize', 4);
 
 
+/**
+ * Orders Controller
+ */
+jwt.controller('ordersCtrl', function ($scope) {
 
+    $scope.create = function (response)
+    {
+        alert('You have created a new order');
+    }
+
+    $scope.update = function(response)
+    {
+        alert('You have updated order details');
+    }
+
+});
 
 
 

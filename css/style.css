@@ -30,3 +30,11 @@ nav {
 .available-orders{
     margin-left: 15px;
 }
+
+#updateOrderModal{
+    float: left;
+}
+
+#addOrderModal{
+    float: left;
+}
