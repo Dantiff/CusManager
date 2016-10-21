@@ -51,23 +51,29 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'app/customers/allCustomers.html'
         })
 
-        .state('customers.allCustomers', {
+        .state('allCustomers', {
             url: '/allcustomers',
             templateUrl: 'app/customers/allCustomers.html'
         })
 
-        .state('customers.addCustomer', {
+        .state('addCustomer', {
             url: '/addcustomers',
-            templateUrl: 'app/customers/addCustomer.html',
+            templateUrl: 'app/customers/add_customer.html',
             controller: function($scope) {
                 $scope.laptops = ['Acer Aspire Series', 'Apple MacBook', 'HP ElliteBook', 'Lenovo X Series', 'Samsung', 'Chrome Book'];
             }
         })
 
-        .state('customers.viewCustomer', {
-            url: '/customers',
-            templateUrl: 'app/customers/view_customer.html'
+        .state('viewCustomer', {
+            url: '/viewCustomers',
+            templateUrl: 'app/customers/viewCustomer.html'
         })
+
+        .state('editCustomer', {
+            url: '/editCustomers',
+            templateUrl: 'app/customers/editCustomer.html'
+        })
+
 
 
         /**
@@ -75,7 +81,7 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          */
         .state('orders', {
             url: '/orders',
-            templateUrl: 'app/orders/allOrders.html'
+            templateUrl: 'app/orders/orders.html'
         })
 
 
@@ -84,11 +90,18 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'app/orders/allOrders.html'
         })
 
-
         .state('orders.addOrder', {
             url: '/addOrder',
             templateUrl: 'app/orders/addOrder.html'
         })
+
+
+
+        .state('orders.editOrders', {
+            url: '/editOrders',
+            templateUrl: 'app/orders/editOrder.html'
+        })
+
 
         /**
          * About Page

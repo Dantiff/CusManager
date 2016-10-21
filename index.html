@@ -27,7 +27,7 @@
 <body ng-app="jwt">
 
 
-<div ng-controller="sessionsCtrl" >
+<div ng-controller="MainCtrl as main" >
     <div class="container">
         <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle></button>
@@ -43,13 +43,15 @@
                         <ul class="menu vertical">
                             <li> <a ui-sref="orders.allOrders"> All Orders </a> </li>
                             <li> <a ui-sref="orders.addOrder"> Add Order </a>  </li>
+                            <li> <a ui-sref="orders.editOrders"> Edit Orders </a>  </li>
                         </ul>
                     </li>
                     <li>
                         <a ui-sref="customers">Customers </a>
                         <ul class="menu vertical">
-                            <li> <a ui-sref="customers.allCustomers"> All Customers </a> </li>
-                            <li> <a ui-sref="customers.addCustomer"> Add Customer </a>  </li>
+                            <li> <a ui-sref="allCustomers"> All Customers </a> </li>
+                            <li> <a ui-sref="addCustomer"> Add Customer </a>  </li>
+                            <li> <a ui-sref="editCustomer"> Edit Customer </a>  </li>
                         </ul>
                     </li>
                     <li><a ui-sref="home.about">About</a></li>
@@ -66,7 +68,7 @@
                         <ul class="menu vertical">
                             <li> <a ui-sref="home.profile"> My Profile </a>  </li>
                             <li role="separator" class="divider"></li>
-                            <li> <a ng-click="logout()"> Logout </a> </li>
+                            <li> <a ui-sref="home.login" ng-click="logout()"> Logout </a> </li>
 
                         </ul>
                     </li>
@@ -104,6 +106,8 @@
 <script src="js/vendor/foundation.min.js"></script>
 <script src="js/reveal/jquery.reveal.js"></script>
 <script src="js/vendor/foundation.reveal.js"></script>
+<script src="js/vendor/what-input.js"></script>
+<script src="js/vendor/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>

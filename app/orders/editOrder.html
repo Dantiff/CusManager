@@ -2,21 +2,19 @@
 
 <div class="row" ng-controller="ordersCtrl">
 
-
-    <div id="home1-view" class="large-3 medium-3 columns" style="float: left"> </div>
-
-    <div class="small-8 large-8 columns"  id="addOrderModal" >
-        <!--<div class="reveal" id="addOrderModal" data-reveal>-->
+    <div class="small-8 large-8 columns" id="updateOrderModal" >
+        <!--<div class="reveal" id="updateOrderModal" data-reveal>-->
 
         <div >
+            <input type="hidden" ng-model="currentorderId" />
             <p><input class="form-control" ng-model="currentorderTitle" placeholder="Title..." type="text"></p>
             <p><input class="form-control" ng-model="currentorderAuthorName" placeholder="Author Name..." type="text"></p>
             <p><input class="form-control" ng-model="currentorderDescription" placeholder="Description..." type="text"></p>
             <p><input class="form-control" ng-model="currentorderAmount" placeholder="Amount..." type="text"></p>
         </div>
-        <div>
+        <div >
             <button type="button" class="alert button" data-dismiss="modal">Close</button>
-            <button type="button" class="primary button" ng-click="create()">Save order</button>
+            <button type="button" class="primary button" ng-click="update()">Save Changes</button>
         </div>
 
     </div><!-- /.modal -->

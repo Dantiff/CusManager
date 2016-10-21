@@ -31,7 +31,7 @@ jwt.controller('indexCtrl', function ($scope, $log) {
 /**
  * Sessions Controller: Register, login, logout
  */
-jwt.controller('sessionsCtrl', ['$scope', 'auth', 'API', '$http', '$location', function($scope, auth, API, $http, $location){
+jwt.controller('MainCtrl', ['$scope', 'auth', 'API', '$http', '$location', function($scope, auth, API, $http, $location){
 
 
     $scope.login = function()

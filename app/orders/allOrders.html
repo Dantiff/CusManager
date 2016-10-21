@@ -25,49 +25,6 @@
             </div>
         </div>
 
-        <div class="small-8 large-8 columns"  id="addOrderModal" >
-            <!--<div class="reveal" id="addOrderModal" data-reveal>-->
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 id="addOrderTitle">Add an order</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><input class="form-control" ng-model="currentorderTitle" placeholder="Title..." type="text"></p>
-                        <p><input class="form-control" ng-model="currentorderAuthorName" placeholder="Author Name..." type="text"></p>
-                        <p><input class="form-control" ng-model="currentorderDescription" placeholder="Description..." type="text"></p>
-                        <p><input class="form-control" ng-model="currentorderAmount" placeholder="Amount..." type="text"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="alert button" data-dismiss="modal">Close</button>
-                        <button type="button" class="primary button" ng-click="create()">Save order</button>
-                    </div>
-
-        </div><!-- /.modal -->
-
-        <br>
-
-        <div class="small-8 large-8 columns" id="updateOrderModal" >
-        <!--<div class="reveal" id="updateOrderModal" data-reveal>-->
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 id="upOrderTitle">Update order</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" ng-model="currentorderId" />
-                        <p><input class="form-control" ng-model="currentorderTitle" placeholder="Title..." type="text"></p>
-                        <p><input class="form-control" ng-model="currentorderAuthorName" placeholder="Author Name..." type="text"></p>
-                        <p><input class="form-control" ng-model="currentorderDescription" placeholder="Description..." type="text"></p>
-                        <p><input class="form-control" ng-model="currentorderAmount" placeholder="Amount..." type="text"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="alert button" data-dismiss="modal">Close</button>
-                        <button type="button" class="primary button" ng-click="update()">Save Changes</button>
-                    </div>
-
-        </div><!-- /.modal -->
-
     </div>
 
 

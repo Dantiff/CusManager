@@ -99,3 +99,21 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
     return auth;
 }]);
 
+
+jwt.factory('ordersService', ['auth', 'localStorageService', function (auth, localStorageService) {
+
+    ordersService.getAll = function (onSuccess, onError) {
+
+        localStorageService.all('orders').getList()
+            .then(function (response) {
+
+                onSuccess(response);
+
+            }, function () {
+
+                onError(response);
+            });
+
+    }
+
+}]);
