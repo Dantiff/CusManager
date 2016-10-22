@@ -6,16 +6,24 @@
         <!--<div class="reveal" id="addOrderModal" data-reveal>-->
         <h3> Create Order </h3>
 
-        <div >
-            <p><input class="form-control" ng-model="currentOrderTitle" placeholder="Title..." type="text"></p>
-            <p><input class="form-control" ng-model="currentOrderAuthName" placeholder="Author Name..." type="text"></p>
-            <p><input class="form-control" ng-model="currentOrderDescription" placeholder="Description..." type="text"></p>
-            <p><input class="form-control" ng-model="currentOrderAmount" placeholder="Amount..." type="text"></p>
-        </div>
-        <div>
-            <button type="reset" class="warning button">Reset</button>
-            <button type="submit" class="primary button" ng-click="create()">Save order</button>
-        </div>
+        <form name="addCustomerForm">
+
+            <div >
+
+                <p><input class="form-control" ng-model="currentOrderTitle" placeholder="Title..." type="text" name="title"  id="title"  ng-required="required"></p>
+                <div role="alert">
+                  <span class="error" ng-show="addCustomerForm.title.$error.required">
+                  </span>
+                </div>
+                <p><input class="form-control" ng-model="currentOrderAuthName" placeholder="Author Name..." type="text"></p>
+                <p><input class="form-control" ng-model="currentOrderDescription" placeholder="Description..." type="text"></p>
+                <p><input class="form-control" ng-model="currentOrderAmount" placeholder="Amount..." type="text"></p>
+            </div>
+            <div class="button-group">
+                <input type="reset" class="warning button">
+                <button type="submit" class="primary button" ng-click="create()">Save order</button>
+            </div>
+        </form>
 
     </div>
     <hr>

@@ -140,7 +140,25 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
     $scope.create = function ()
     {
-        var allCustomers = customersService.create({
+        var allCustomers = customersService.create(
+            $scope.currentCustomerNames,
+            $scope.currentCustomerAddress,
+            $scope.currentCustomerAddress,
+            $scope.currentCustomerPhone
+        );
+
+        $scope.customers = allCustomers;
+
+        console.log($scope.customers);
+
+        $location.path('allCustomers');
+
+    };
+
+
+    $scope.update = function ()
+    {
+        var allCustomers = customersService.update($scope.currentCustomerId, {
             names: $scope.currentCustomerNames,
             emailAddress: $scope.currentCustomerAddress,
             address: $scope.currentCustomerAddress,
@@ -149,13 +167,10 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
         $scope.customers = allCustomers;
 
-        // console.log($scope.customers);
 
-        // $scope.showAll();
-        // $location.path('/allCustomers' );
+        $location.path('allCustomers');
 
     };
-
 
 
     $scope.showAll = function () {
@@ -164,12 +179,21 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
         $scope.customers = allCustomers;
 
-        console.log($scope.customers);
-
-        // $location.path('allCustomers');
-
-
     };
+
+
+
+    $scope.remove = function (id) {
+
+        if(confirm('Are you sure to remove this customer from the system?')){
+
+            customersService.remove(id);
+
+            $scope.showAll();
+        }
+    };
+
+
 
 
 }]);
@@ -182,24 +206,24 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
  */
 jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', function ($scope, $location, auth, ordersService) {
 
+    $scope.required = true;
 
     $scope.create = function ()
     {
-       var allOrders = ordersService.create({
-            title: $scope.currentOrderTitle,
-            auth_name: $scope.currentOrderAuthName,
-            description: $scope.currentOrderDescription,
-            amount: $scope.currentOrderAmount
-        });
+       var allOrders = ordersService.create(
+            $scope.currentOrderTitle,
+            $scope.currentOrderAuthName,
+            $scope.currentOrderDescription,
+            $scope.currentOrderAmount
+        );
 
         $scope.orders = allOrders;
 
-        console.log($scope.orders);
-
         $location.path('allOrders');
 
-    };
+        $scope.showAll();
 
+    };
 
 
     $scope.showAll = function () {
@@ -208,15 +232,13 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
 
         $scope.orders = allOrders;
 
-            // $location.path('cm/addOrder');
-
 
     };
 
 
     $scope.update = function ()
         {
-            var allOrders = ordersService.create({
+            var allOrders = ordersService.update($scope.currentOrderId, {
                 title: $scope.currentOrderTitle,
                 auth_name: $scope.currentOrderAuthName,
                 description: $scope.currentOrderDescription,
@@ -225,33 +247,24 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
 
             $scope.orders = allOrders;
 
-            // $location.path('allOrders', [$scope.orders] );
+            $location.path('allOrders');
 
         };
 
 
-    $scope.remove = function () {
+    $scope.remove = function (id) {
 
         if(confirm('Are you sure to remove this order from your list?')){
-            ordersService.remove();
+
+            ordersService.remove(id);
+
+            $scope.showAll();
         }
     };
 
 
-    //
-    // $scope.refresh = function () {
-    //
-    //     ordersService.getAll(function (response) {
-    //
-    //         $scope.orders = response;
-    //     }, function () {
-    //
-    //         alert('Some errors occurred while communicating with the service. Please try again later.');
-    //     });
-    //
-    // };
-    //
-    //
+
+
     //
     // $scope.load = function(orderId){
     //

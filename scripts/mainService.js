@@ -18,7 +18,7 @@ jwt.factory('jwtInterceptor', function($window){
     return {
         request: function(config)
         {
-            var token = $window.localStorage.getItem('token');;
+            var token = $window.localStorage.getItem('token');
 
 
             config.headers.Authorization = 'Bearer ' + token;
@@ -127,23 +127,23 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
 jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localStorage){
 
 
-    var customersService = $localStorage.orders;
+    var customersService = {};
+
+    customersService = [];
+
+    customersService.create = function (names, emailAddress, address, phone) {
 
 
-    customersService.create = function (data) {
+        var id = customersService.length + 1;
 
-        customersService = [];
 
-        var id = (customersService.length)+1;
-
-        data['id'] = id;
-
-        customersService.push(data);
-
-        console.log(customersService);
-        // $localStorage.orders = [data];
-
-        // var showCustomers = $localStorage.orders;
+        customersService.push({
+            id: id,
+            names: names,
+            emailAddress: emailAddress,
+            address: address,
+            phone: phone
+        });
 
         alert('New customer registered');
 
@@ -152,23 +152,16 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     customersService.showAll = function () {
 
-        var showCustomers = $localStorage.orders;
-
-        // console.log($localStorage.orders);
-
-
-        return showCustomers;
+        return customersService;
 
     };
 
 
-    customersService.update = function (data) {
+    customersService.update = function ( customerId, data) {
 
-        var id = (customersService.length)+1;
+        data['id'] = customerId;
 
-        data['id'] = id++;
-
-        $localStorage.orders = data;
+        $localStorage.orders = [data];
 
         var showCustomers = $localStorage.orders;
 
@@ -177,9 +170,9 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
         return showCustomers;
     };
 
-    customersService.remove = function () {
+    customersService.remove = function (customerId) {
 
-        $localStorage.$reset('orders');
+        $localStorage.$reset('customers');
 
         alert('Customer successfully removed');
 
@@ -194,8 +187,6 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
 
 
-
-
 /**
  * Orders Service
  */
@@ -206,40 +197,37 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
     ordersService = [];
 
-    ordersService.create = function (data) {
+    ordersService.create = function (title, auth_name, description, amount) {
 
-        var id = (ordersService.length)+1;
+        var id = ordersService.length + 1;
 
-        data['id'] = id;
+        ordersService.push(
+            {
+                id: id,
+                title: title,
+                auth_name: auth_name,
+                description: description,
+                amount: amount
+            }
+        );
 
-        $localStorage.orders = [data];
+        alert('New customer registered');
 
-        var showOrders = $localStorage.orders;
-
-        alert('New order registered');
-
-        return showOrders;
+        return ordersService;
     };
 
     ordersService.showAll = function () {
 
-        var showOrders = $localStorage.orders;
-
-        console.log($localStorage.orders);
-
-
-        return showOrders;
+        return ordersService;
 
     };
 
 
-    ordersService.update = function (data) {
+    ordersService.update = function (orderId, data) {
 
-        var id = (ordersService.length)+1;
+        data['id'] = orderId;
 
-        data['id'] = id++;
-
-        $localStorage.orders = data;
+        $localStorage.orders = [data];
 
         var showOrders = $localStorage.orders;
 
@@ -248,13 +236,14 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
         return showOrders;
     };
 
-    ordersService.remove = function () {
+    ordersService.remove = function (orderId) {
 
        $localStorage.$reset('orders');
 
         alert('Order successfully removed');
 
     };
+
 
 
 
