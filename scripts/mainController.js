@@ -145,7 +145,15 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
             amount: $scope.currentOrderAmount
         });
 
+        // $scope.orders = '';
+        // $scope.orders['title'] = allOrders['title'][0];
+        // $scope.orders['auth_name'] = allOrders['auth_name'][0];
+        // $scope.orders['description'] = allOrders['description'][0];
+        // $scope.orders['amount'] = allOrders['amount'][0];
+
         $scope.orders = allOrders;
+
+        console.log($scope.orders);
 
         // $location.path('allOrders', [$scope.orders] );
 

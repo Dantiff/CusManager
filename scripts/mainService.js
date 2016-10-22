@@ -118,7 +118,7 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
         data['id'] = id++;
 
-        $localStorage.orders = data;
+        $localStorage.orders = [data];
 
         var showOrders = $localStorage.orders;
 
@@ -165,10 +165,10 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
 
 
-    auth.logout = function()
-    {
-        $window.localStorage.removeItem('token');
-    };
+    // auth.logout = function()
+    // {
+    //     $window.localStorage.removeItem('token');
+    // };
 
     return ordersService;
 }]);
