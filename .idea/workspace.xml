@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f75c71d2-f8b0-4a2f-8508-359ad0253aa0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cm.html" afterPath="$PROJECT_DIR$/app/cm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/home.html" afterPath="$PROJECT_DIR$/app/partials/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/orders/addOrder.html" afterPath="$PROJECT_DIR$/app/orders/addOrder.html" />
     </list>
     <ignored path="Security.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="4" column="100" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
+            <state relative-caret-position="317">
+              <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -49,6 +48,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="230" column="42" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addOrder.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/orders/addOrder.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -138,13 +147,13 @@
         <option value="$PROJECT_DIR$/app/orders/allOrders.html" />
         <option value="$PROJECT_DIR$/app/customers/editCustomer.html" />
         <option value="$PROJECT_DIR$/app/orders/editOrder.html" />
-        <option value="$PROJECT_DIR$/app/orders/addOrder.html" />
         <option value="$PROJECT_DIR$/app/customers/add_customer.html" />
         <option value="$PROJECT_DIR$/app/customers/allCustomers.html" />
         <option value="$PROJECT_DIR$/scripts/mainController.js" />
         <option value="$PROJECT_DIR$/scripts/mainService.js" />
         <option value="$PROJECT_DIR$/app/cm.html" />
         <option value="$PROJECT_DIR$/app/partials/home.html" />
+        <option value="$PROJECT_DIR$/app/orders/addOrder.html" />
       </list>
     </option>
   </component>
@@ -407,12 +416,12 @@
       <workItem from="1476953347174" duration="5107000" />
       <workItem from="1476966360742" duration="27882000" />
       <workItem from="1477057873248" duration="778000" />
-      <workItem from="1477060199545" duration="51831000" />
+      <workItem from="1477060199545" duration="51993000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102606000" />
+    <option name="totallyTimeSpent" value="102768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1014" height="952" extended-state="0" />
@@ -756,16 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/orders/addOrder.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/orders/allOrders.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -830,8 +829,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="4" column="100" selection-start-line="4" selection-start-column="100" selection-end-line="4" selection-end-column="100" />
+        <state relative-caret-position="317">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/orders/addOrder.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
