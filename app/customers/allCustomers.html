@@ -1,10 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+
+<div class="row">
+    <div class="jumbotron text-center">
+        <h1><strong>The Customer Manager </strong> </h1>
+        <p> <strong> This application is designed to offer you the best <span class="text-danger">user experience</span> by raising the degree of <span class="text-danger">responsiveness </span> to best meet your needs </strong> </p>
+    </div>
+
+</div>
+<div class="row">
+
+
+    <div ui-view>
+
+        <div class="row" ng-controller="customersCtrl">
+            <div class="large-12 medium-12 columns">
+
+                <hr>
+
+                <div>
+
+                    <div class="button-group">
+                        <a ui-sref="cm.addCustomer">
+
+                            <span class="success button"> + Add Customer</span>
+                        </a>
+                        <a class="alert button radius">
+                            Remove Customers
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <hr>
+
+                    <div style="margin-left: 5px;" class="row available-customers">
+                        <div class="col-md-12">
+                            <p>You currently have <b>{{ customers.length }}</b> customers registered with the system.</p>
+                            <ul>
+                                <li ng-repeat="customer in customers">
+                                    <b>{{ customer.title }}</b> by <i>{{ customer.auth_name }}</i> |
+                                    <button ng-click="load(customer.id)" class="primary button" data-open="updatecustomerModal">Update</button>
+                                    <button ng-click="remove(customer.id)" class="alert button">Remove</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<br>
+<hr>
+
+<div class="footer">
+    <div class="row">
+
+        <p class="large-3 small-centered columns">  <span class="alert"> ~@2016CustomerManager~ </span></p>
+
+    </div>
+
+</div>

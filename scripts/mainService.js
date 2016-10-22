@@ -100,88 +100,176 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
 }]);
 
 
+
+
 /**
- * Orders service
+ * Sessions Service: JWT for register, login, logout
  */
-jwt.factory('ordersService', ['auth', 'localStorageService', function (auth, localStorageService) {
 
-    ordersService.getAll = function (onSuccess, onError) {
+jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStorage){
 
-        localStorageService.all('orders').getList()
-            .then(function (response) {
+    var ordersService = {};
 
-                onSuccess(response);
+    ordersService = [];
 
-            }, function (response) {
+    ordersService.create = function (data) {
 
-                onError(response);
-            });
+        var id = (ordersService.length)+1;
 
+        data['id'] = id++;
+
+        $localStorage.orders = data;
+
+        var showOrders = $localStorage.orders;
+
+        alert('New order registered');
+
+        return showOrders;
     };
 
-    ordersService.getById = function (orderId, onSuccess, onError) {
+    ordersService.showAll = function () {
 
-        localStorageService.one('orders').get()
+        var showOrders = $localStorage.orders;
 
-            .then(function (response) {
+        console.log($localStorage.orders);
 
-                onSuccess(response);
 
-            }, function (response) {
-
-                onError(response);
-
-            });
-
-    };
-
-    ordersService.create = function (data, onSuccess, onError) {
-
-        localStorageService.all('orders').post(data)
-
-            .then(function (response) {
-
-                onSuccess(response);
-
-            }, function (response) {
-
-                onError(response);
-
-            });
-    };
-
-    ordersService.update = function (orderId, data, onSuccess, onError) {
-
-        localStorageService.one('orders').customPut(data, orderId)
-
-            .then(function (response) {
-
-                onSuccess(response);
-
-            }, function (response) {
-
-                onError(response);
-
-            });
-    };
-
-    ordersService.remove = function (orderId, onSuccess, onError) {
-
-        localStorageService.one('orders', orderId).remove()
-
-            .then(function (response) {
-
-                onSuccess(response);
-
-            }, function (response) {
-
-                onError(response);
-
-            });
+        return showOrders;
 
     };
 
 
-    localStorageService.setDefaultHeaders({ 'Authorization' : 'Bearer ' + auth.getCurrentToken() });
+    ordersService.update = function (data) {
 
+        var id = (ordersService.length)+1;
+
+        data['id'] = id++;
+
+        $localStorage.orders = data;
+
+        var showOrders = $localStorage.orders;
+
+        alert('Order details successfully updated');
+
+        return showOrders;
+    };
+
+    ordersService.remove = function () {
+
+       $localStorage.$reset('orders');
+
+        alert('Order successfully removed');
+
+    };
+
+
+
+
+    auth.logout = function()
+    {
+        $window.localStorage.removeItem('token');
+    };
+
+    return ordersService;
 }]);
+
+
+
+
+//
+// /**
+//  * Orders service
+//  */
+// jwt.factory('ordersService', ['auth', '$window', function (auth, $window) {
+//
+//
+//     ordersService.create = function (data, onSuccess, onError) {
+//
+//         var orders = {};
+//
+//         orders.push(data);
+//
+//         $window.localStorage.setItem('orders', JSON.stringify(orders))
+//
+//             .then(function (response) {
+//
+//                 onSuccess(response);
+//
+//             }, function (response) {
+//
+//                 onError(response);
+//
+//             });
+//     };
+
+    // ordersService.getAll = function (onSuccess, onError) {
+    //
+    //     var result = JSON.parse($window.localStorage.getItem("orders")).getList()
+    //
+    //         .then(function (response) {
+    //
+    //             onSuccess(response);
+    //
+    //         }, function (response) {
+    //
+    //             onError(response);
+    //         });
+    //
+    // };
+    //
+    // ordersService.getById = function (orderId, onSuccess, onError) {
+    //
+    //     $window.localStorage.getItem('orders').get()
+    //
+    //         .then(function (response) {
+    //
+    //             onSuccess(response);
+    //
+    //         }, function (response) {
+    //
+    //             onError(response);
+    //
+    //         });
+    //
+    // };
+    //
+    //
+    // ordersService.update = function  (data, orderId, onSuccess, onError) {
+    //
+    //     var orders = {};
+    //
+    //     orders.push(data);
+    //
+    //     $window.localStorage.setItem('orders', JSON.stringify(orders)).custom(data, orderId)
+    //
+    //         .then(function (response) {
+    //
+    //             onSuccess(response);
+    //
+    //         }, function (response) {
+    //
+    //             onError(response);
+    //
+    //         });
+    // };
+    //
+    // ordersService.remove = function (orderId, onSuccess, onError) {
+    //
+    //     window.localStorage.one('orders', orderId).remove()
+    //
+    //         .then(function (response) {
+    //
+    //             onSuccess(response);
+    //
+    //         }, function (response) {
+    //
+    //             onError(response);
+    //
+    //         });
+    //
+    // };
+    //
+    //
+    // localStorageService.setDefaultHeaders({ 'Authorization' : 'Bearer ' + auth.getCurrentToken() });
+
+// }]);

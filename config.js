@@ -1,6 +1,7 @@
 var jwt = angular.module('jwt', [
     'ui.router',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ngStorage'
 ]);
 
 jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
@@ -12,11 +13,17 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     $stateProvider
 
         /**
-         * Home
+         * Template pages
          */
         .state('home', {
             url: '/home',
             templateUrl: 'app/partials/home.html'
+        })
+
+
+        .state('cm', {
+            url: '/cm',
+            templateUrl: 'app/cm.html'
         })
 
         .state('home.paragraph', {
@@ -25,7 +32,7 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         })
 
         /**
-         * Users
+         * Users home
          */
         .state('home.profile', {
             url: '/profile',
@@ -56,7 +63,7 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             templateUrl: 'app/customers/allCustomers.html'
         })
 
-        .state('addCustomer', {
+        .state('cm.addCustomer', {
             url: '/addcustomers',
             templateUrl: 'app/customers/add_customer.html',
             controller: function($scope) {
@@ -64,12 +71,12 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             }
         })
 
-        .state('viewCustomer', {
+        .state('cm.viewCustomer', {
             url: '/viewCustomers',
             templateUrl: 'app/customers/viewCustomer.html'
         })
 
-        .state('editCustomer', {
+        .state('cm.editCustomer', {
             url: '/editCustomers',
             templateUrl: 'app/customers/editCustomer.html'
         })
@@ -81,23 +88,23 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          */
         .state('orders', {
             url: '/orders',
-            templateUrl: 'app/orders/orders.html'
+            templateUrl: 'app/cm.html'
         })
 
 
-        .state('orders.allOrders', {
+        .state('allOrders', {
             url: '/allOrders',
             templateUrl: 'app/orders/allOrders.html'
         })
 
-        .state('orders.addOrder', {
+        .state('cm.addOrder', {
             url: '/addOrder',
             templateUrl: 'app/orders/addOrder.html'
         })
 
 
 
-        .state('orders.editOrders', {
+        .state('cm.editOrders', {
             url: '/editOrders',
             templateUrl: 'app/orders/editOrder.html'
         })

@@ -1,37 +1,68 @@
 
 
-<div class="row" ng-controller="ordersCtrl">
+<div class="row">
+    <div class="jumbotron text-center">
+        <h1><strong>The Customer Manager </strong> </h1>
+        <p> <strong> This application is designed to offer you the best <span class="text-danger">user experience</span> by raising the degree of <span class="text-danger">responsiveness </span> to best meet your needs </strong> </p>
+    </div>
 
-    <hr>
+</div>
+<div class="row">
 
-    <div>
 
-        <div class="button-group">
-            <a ui-sref="orders.addOrder">
-                <span class="success button"> + Add order</span>
-            </a>
-            <a class="primary button radius">
-                My Orders
-            </a>
-        </div>
-        <div class="clearfix"></div>
+    <div ui-view>
 
-        <hr>
+        <div class="row" ng-controller="ordersCtrl">
+            <div class="large-12 medium-12 columns">
 
-        <div style="margin-left: 5px;" class="row available-orders">
-            <div class="col-md-12">
-                <p>You currently have <b>{{ orders.length }}</b> orders in your profile.</p>
-                <ul>
-                    <li ng-repeat="order in orders">
-                        <b>{{ order.title }}</b> by <i>{{ order.auth_name }}</i> |
-                        <button ng-click="load(order.id)" class="primary button" data-open="updateOrderModal">Update</button>
-                        <button ng-click="remove(order.id)" class="alert button">Remove</button>
-                    </li>
-                </ul>
+                <hr>
+
+                <div>
+
+                    <div class="button-group">
+                        <a ui-sref="cm.addOrder">
+
+                            <span class="success button"> + Add Order</span>
+                        </a>
+                        <a class="primary button radius" ng-click="showAll()">
+                            My Orders
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <hr>
+
+                    <div style="margin-left: 5px;" class="row available-orders">
+                        <div class="col-md-12">
+                            <p> {{orders}} </p>
+                            <p>You currently have <b>{{ orders.length }}</b> orders in your profile.</p>
+                            <ul>
+                                <li ng-repeat="order in orders">
+                                    <b>{{ order.title }}</b> by <i>{{ order.auth_name }}</i> |
+                                    <button ng-click="load(order.id)" class="primary button" data-open="updateOrderModal">Update</button>
+                                    <button ng-click="remove(order.id)" class="alert button">Remove</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
     </div>
 
+</div>
+<br>
+<hr>
+
+<div class="footer">
+    <div class="row">
+
+        <p class="large-3 small-centered columns">  <span class="alert"> ~@2016CustomerManager~ </span></p>
+
+    </div>
 
 </div>

@@ -2,23 +2,35 @@
 
 <div class="row" ng-controller="ordersCtrl">
 
-
-    <div id="home1-view" class="large-3 medium-3 columns" style="float: left"> </div>
-
     <div class="small-8 large-8 columns"  id="addOrderModal" >
         <!--<div class="reveal" id="addOrderModal" data-reveal>-->
 
         <div >
-            <p><input class="form-control" ng-model="currentorderTitle" placeholder="Title..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderAuthName" placeholder="Author Name..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderDescription" placeholder="Description..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderAmount" placeholder="Amount..." type="text"></p>
+            <p><input class="form-control" ng-model="currentOrderTitle" placeholder="Title..." type="text"></p>
+            <p><input class="form-control" ng-model="currentOrderAuthName" placeholder="Author Name..." type="text"></p>
+            <p><input class="form-control" ng-model="currentOrderDescription" placeholder="Description..." type="text"></p>
+            <p><input class="form-control" ng-model="currentOrderAmount" placeholder="Amount..." type="text"></p>
         </div>
         <div>
-            <button type="button" class="alert button" ng-click="delete()">Close</button>
-            <button type="button" class="primary button" ng-click="create()">Save order</button>
+            <button type="reset" class="warning button">Reset</button>
+            <button type="submit" class="primary button" ng-click="create()">Save order</button>
         </div>
 
-    </div><!-- /.modal -->
+    </div>
+    <hr>
+
+    <div style="margin-left: 5px;" class="row available-orders">
+        <div class="col-md-12">
+            <p> {{orders}} </p>
+            <p>You currently have <b>{{ orders.length }}</b> orders in your profile.</p>
+            <ul>
+                <li ng-repeat="order in orders">
+                    <b>{{ order.title }}</b> by <i>{{ order.auth_name }}</i> |
+                    <button ng-click="load(order.id)" class="primary button" data-open="updateOrderModal">Update</button>
+                    <button ng-click="remove(order.id)" class="alert button">Remove</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </div>

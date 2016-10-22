@@ -39,22 +39,22 @@
                 <ul class="dropdown menu" data-dropdown-menu>
                     <li><a ui-sref="home">Home</a></li>
                     <li class="has-dropdown">
-                        <a ui-sref="orders">Orders</a>
+                        <a >Orders</a>
                         <ul class="menu vertical">
-                            <li> <a ui-sref="orders.allOrders"> All Orders </a> </li>
-                            <li> <a ui-sref="orders.addOrder"> Add Order </a>  </li>
-                            <li> <a ui-sref="orders.editOrders"> Edit Orders </a>  </li>
+                            <li> <a ui-sref="allOrders"> All Orders </a> </li>
+                            <li> <a ui-sref="cm.addOrder"> Add Order </a>  </li>
+                            <li> <a ui-sref="cm.editOrders"> Edit Orders </a>  </li>
                         </ul>
                     </li>
                     <li>
                         <a ui-sref="customers">Customers </a>
                         <ul class="menu vertical">
                             <li> <a ui-sref="allCustomers"> All Customers </a> </li>
-                            <li> <a ui-sref="addCustomer"> Add Customer </a>  </li>
-                            <li> <a ui-sref="editCustomer"> Edit Customer </a>  </li>
+                            <li> <a ui-sref="cm.addCustomer"> Add Customer </a>  </li>
+                            <li> <a ui-sref="cm.editCustomer"> Edit Customer </a>  </li>
                         </ul>
                     </li>
-                    <li><a ui-sref="home.about">About</a></li>
+                    <li><a href="#">About</a></li>
                 </ul>
             </div>
             <div class="top-bar-right" id="navbar-right" >
@@ -112,6 +112,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/ngstorage/ngStorage.min.js"></script>
 
 <script>
     $(document).foundation();

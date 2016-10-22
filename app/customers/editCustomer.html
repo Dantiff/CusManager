@@ -6,14 +6,13 @@
         <!--<div class="reveal" id="updateOrderModal" data-reveal>-->
 
         <div >
-            <input type="hidden" ng-model="currentorderId" />
-            <p><input class="form-control" ng-model="currentorderTitle" placeholder="Title..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderAuthorName" placeholder="Author Name..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderDescription" placeholder="Description..." type="text"></p>
-            <p><input class="form-control" ng-model="currentorderAmount" placeholder="Amount..." type="text"></p>
+            <input type="hidden" ng-model="currentCustomerId" />
+            <p><input class="form-control" ng-model="currentCustomerNames" placeholder="Names..." type="text"></p>
+            <p><input class="form-control" ng-model="currentCustomerEmail" placeholder="Email..." type="text"></p>
+            <p><input class="form-control" ng-model="currentCustomerAddress" placeholder="Address..." type="text"></p>
         </div>
         <div >
-            <button type="button" class="alert button" data-dismiss="modal">Close</button>
+            <button type="button" class="alert button" ng-click="refresh()">Close</button>
             <button type="button" class="primary button" ng-click="update()">Save Changes</button>
         </div>
 
