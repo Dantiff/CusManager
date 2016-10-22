@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f75c71d2-f8b0-4a2f-8508-359ad0253aa0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/customers/allCustomers.html" afterPath="$PROJECT_DIR$/app/customers/allCustomers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/orders/allOrders.html" afterPath="$PROJECT_DIR$/app/orders/allOrders.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/mainController.js" afterPath="$PROJECT_DIR$/scripts/mainController.js" />
     </list>
     <ignored path="Security.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/mainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="230" column="42" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
+            <state relative-caret-position="623">
+              <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -64,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="allCustomers.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="allCustomers.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/customers/allCustomers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="5" column="101" selection-start-line="5" selection-start-column="101" selection-end-line="5" selection-end-column="101" />
+            <state relative-caret-position="240">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -148,13 +147,13 @@
         <option value="$PROJECT_DIR$/app/customers/editCustomer.html" />
         <option value="$PROJECT_DIR$/app/orders/editOrder.html" />
         <option value="$PROJECT_DIR$/app/customers/add_customer.html" />
-        <option value="$PROJECT_DIR$/scripts/mainController.js" />
         <option value="$PROJECT_DIR$/scripts/mainService.js" />
         <option value="$PROJECT_DIR$/app/cm.html" />
         <option value="$PROJECT_DIR$/app/partials/home.html" />
         <option value="$PROJECT_DIR$/app/orders/addOrder.html" />
         <option value="$PROJECT_DIR$/app/orders/allOrders.html" />
         <option value="$PROJECT_DIR$/app/customers/allCustomers.html" />
+        <option value="$PROJECT_DIR$/scripts/mainController.js" />
       </list>
     </option>
   </component>
@@ -417,12 +416,12 @@
       <workItem from="1476953347174" duration="5107000" />
       <workItem from="1476966360742" duration="27882000" />
       <workItem from="1477057873248" duration="778000" />
-      <workItem from="1477060199545" duration="52097000" />
+      <workItem from="1477060199545" duration="52324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102872000" />
+    <option name="totallyTimeSpent" value="103099000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1014" height="952" extended-state="0" />
@@ -776,14 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/mainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="230" column="42" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/mainService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -836,11 +827,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/customers/allCustomers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="5" column="101" selection-start-line="5" selection-start-column="101" selection-end-line="5" selection-end-column="101" />
+        <state relative-caret-position="240">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/mainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="60" column="14" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -57,7 +57,7 @@ jwt.controller('MainCtrl', ['$scope', 'auth', 'API', '$http', '$location', funct
 
                 alert('Great! You are now signed in! Welcome, ' + $scope.username + '!');
 
-                $location.path('/home/login');
+                $location.path('allOrders');
             },
             function(response){
 
