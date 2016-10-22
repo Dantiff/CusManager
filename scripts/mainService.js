@@ -103,7 +103,7 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
 
 
 /**
- * Sessions Service: JWT for register, login, logout
+ * Orders Service
  */
 
 jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStorage){
@@ -164,11 +164,6 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
 
 
-
-    // auth.logout = function()
-    // {
-    //     $window.localStorage.removeItem('token');
-    // };
 
     return ordersService;
 }]);
