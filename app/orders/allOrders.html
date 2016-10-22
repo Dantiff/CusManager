@@ -15,7 +15,6 @@
         <div class="row" ng-controller="ordersCtrl">
             <div class="large-12 medium-12 columns">
 
-                <hr>
 
                 <div>
 
@@ -27,6 +26,9 @@
                         <a class="primary button radius" ng-click="showAll()">
                             My Orders
                         </a>
+                        <a class="alert button radius" ng-click="showAll()">
+                            Show All Orders
+                        </a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -34,15 +36,33 @@
 
                     <div style="margin-left: 5px;" class="row available-orders">
                         <div class="col-md-12">
-                            <p> {{orders}} </p>
+
                             <p>You currently have <b>{{ orders.length }}</b> orders in your profile.</p>
-                            <ul>
-                                <li ng-repeat="order in orders">
-                                    <b>{{ order.title }}</b> by <i>{{ order.auth_name }}</i> |
-                                    <button ng-click="load(order.id)" class="primary button" data-open="updateOrderModal">Update</button>
-                                    <button ng-click="remove(order.id)" class="alert button">Remove</button>
-                                </li>
-                            </ul>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td> Order Title</td>
+                                    <td> Order By: </td>
+                                    <td> Description </td>
+                                    <td> Amount </td>
+                                    <td> Action </td>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="order in orders">
+                                    <td> {{ order.title }} </td>
+                                    <td> {{ order.auth_name }} </td>
+                                    <td> {{ order.description }} </td>
+                                    <td> {{ order.amount }} </td>
+                                    <td class="button-group large-centered">
+                                        <p class="success button" ui-sref="cm.viewOrder" > View </p>
+                                        <p class="primary button" ui-sref="cm.editOrders"> Update </p>
+                                        <p class="alert button" ng-click="remove(order.id)"> Remove </p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

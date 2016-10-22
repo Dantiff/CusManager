@@ -4,6 +4,7 @@
 
     <div class="small-8 large-8 columns"  id="addOrderModal" >
         <!--<div class="reveal" id="addOrderModal" data-reveal>-->
+        <h3> Create Order </h3>
 
         <div >
             <p><input class="form-control" ng-model="currentOrderTitle" placeholder="Title..." type="text"></p>
@@ -40,9 +41,9 @@
                         <td> {{ order.auth_name }} </td>
                         <td> {{ order.description }} </td>
                         <td> {{ order.amount }} </td>
-                        <td class="button-group">
-                            <p class="success button" ui-sref="order.viewOrder" > View </p>
-                            <p class="primary button" ui-sref="orders.edit"> Update </p>
+                        <td class="button-group large-centered">
+                            <p class="success button" ui-sref="cm.viewOrder" > View </p>
+                            <p class="primary button" ui-sref="cm.editOrders"> Update </p>
                             <p class="alert button" ng-click="remove(order.id)"> Remove </p>
                         </td>
                     </tr>

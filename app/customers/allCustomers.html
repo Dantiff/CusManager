@@ -15,8 +15,6 @@
         <div class="row" ng-controller="customersCtrl">
             <div class="large-12 medium-12 columns">
 
-                <hr>
-
                 <div>
 
                     <div class="button-group">
@@ -24,24 +22,47 @@
 
                             <span class="success button"> + Add Customer</span>
                         </a>
+                        <a class="primary button radius" ng-click="showAll()">
+                            Show All
+                        </a>
                         <a class="alert button radius">
                             Remove Customers
                         </a>
                     </div>
                     <div class="clearfix"></div>
 
+
                     <hr>
 
-                    <div style="margin-left: 5px;" class="row available-customers">
+                    <div style="margin-left: 5px;" class="row available-orders">
                         <div class="col-md-12">
+
                             <p>You currently have <b>{{ customers.length }}</b> customers registered with the system.</p>
-                            <ul>
-                                <li ng-repeat="customer in customers">
-                                    <b>{{ customer.title }}</b> by <i>{{ customer.auth_name }}</i> |
-                                    <button ng-click="load(customer.id)" class="primary button" data-open="updatecustomerModal">Update</button>
-                                    <button ng-click="remove(customer.id)" class="alert button">Remove</button>
-                                </li>
-                            </ul>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td> Name</td>
+                                    <td> Email: </td>
+                                    <td> Address </td>
+                                    <td> Phone </td>
+                                    <td> Action </td>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="customer in customers">
+                                    <td> {{ customer.names }} </td>
+                                    <td> {{ customer.emailAddress }} </td>
+                                    <td> {{ customer.address }} </td>
+                                    <td> {{ customer.phone }} </td>
+                                    <td class="button-group large-centered">
+                                        <p class="success button" ui-sref="cm.viewCustomer" > View </p>
+                                        <p class="primary button" ui-sref="cm.editCustomer"> Update </p>
+                                        <p class="alert button" ng-click="remove(customer.id)"> Remove </p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

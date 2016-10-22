@@ -100,6 +100,100 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
 }]);
 
 
+//
+// var customersService = {};
+//
+// customersService = [];
+//
+// customersService.create = function (data) {
+//
+//     var id = (customersService.length)+1;
+//
+//     data['id'] = id++;
+//
+//     $localStorage.orders = [data];
+//
+//     var showCustomers = $localStorage.orders;
+//
+//     alert('New customer registered');
+//
+//     return showCustomers;
+// };
+
+/**
+ * Customers Service
+ */
+
+jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localStorage){
+
+
+    var customersService = $localStorage.orders;
+
+
+    customersService.create = function (data) {
+
+        customersService = [];
+
+        var id = (customersService.length)+1;
+
+        data['id'] = id;
+
+        customersService.push(data);
+
+        console.log(customersService);
+        // $localStorage.orders = [data];
+
+        // var showCustomers = $localStorage.orders;
+
+        alert('New customer registered');
+
+        return customersService;
+    };
+
+    customersService.showAll = function () {
+
+        var showCustomers = $localStorage.orders;
+
+        // console.log($localStorage.orders);
+
+
+        return showCustomers;
+
+    };
+
+
+    customersService.update = function (data) {
+
+        var id = (customersService.length)+1;
+
+        data['id'] = id++;
+
+        $localStorage.orders = data;
+
+        var showCustomers = $localStorage.orders;
+
+        alert('Customer details successfully updated');
+
+        return showCustomers;
+    };
+
+    customersService.remove = function () {
+
+        $localStorage.$reset('orders');
+
+        alert('Customer successfully removed');
+
+    };
+
+
+
+
+    return customersService;
+}]);
+
+
+
+
 
 
 /**
@@ -116,7 +210,7 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
         var id = (ordersService.length)+1;
 
-        data['id'] = id++;
+        data['id'] = id;
 
         $localStorage.orders = [data];
 

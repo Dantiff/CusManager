@@ -130,6 +130,53 @@ jwt.controller('articleCtrl', function($scope, pageSize) {
 jwt.value('pageSize', 4);
 
 
+
+
+/**
+ * Customers Controller
+ */
+jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersService', function ($scope, $location, auth, customersService) {
+
+
+    $scope.create = function ()
+    {
+        var allCustomers = customersService.create({
+            names: $scope.currentCustomerNames,
+            emailAddress: $scope.currentCustomerAddress,
+            address: $scope.currentCustomerAddress,
+            phone: $scope.currentCustomerPhone
+        });
+
+        $scope.customers = allCustomers;
+
+        // console.log($scope.customers);
+
+        // $scope.showAll();
+        // $location.path('/allCustomers' );
+
+    };
+
+
+
+    $scope.showAll = function () {
+
+        var allCustomers = customersService.showAll();
+
+        $scope.customers = allCustomers;
+
+        console.log($scope.customers);
+
+        // $location.path('allCustomers');
+
+
+    };
+
+
+}]);
+
+
+
+
 /**
  * Orders Controller
  */
@@ -145,17 +192,11 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
             amount: $scope.currentOrderAmount
         });
 
-        // $scope.orders = '';
-        // $scope.orders['title'] = allOrders['title'][0];
-        // $scope.orders['auth_name'] = allOrders['auth_name'][0];
-        // $scope.orders['description'] = allOrders['description'][0];
-        // $scope.orders['amount'] = allOrders['amount'][0];
-
         $scope.orders = allOrders;
 
         console.log($scope.orders);
 
-        // $location.path('allOrders', [$scope.orders] );
+        $location.path('allOrders');
 
     };
 
@@ -163,10 +204,11 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
 
     $scope.showAll = function () {
 
-        ordersService.showAll();
+        var allOrders = ordersService.showAll();
 
+        $scope.orders = allOrders;
 
-            $location.path('cm/addOrder');
+            // $location.path('cm/addOrder');
 
 
     };
