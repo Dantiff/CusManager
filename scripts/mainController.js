@@ -135,14 +135,14 @@ jwt.value('pageSize', 4);
 /**
  * Customers Controller
  */
-jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersService', function ($scope, $location, auth, customersService) {
+jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersService', '$stateParams', function ($scope, $location, auth, customersService, $stateParams) {
 
 
     $scope.create = function ()
     {
         var allCustomers = customersService.create(
             $scope.currentCustomerNames,
-            $scope.currentCustomerAddress,
+            $scope.currentCustomerEmail,
             $scope.currentCustomerAddress,
             $scope.currentCustomerPhone
         );
@@ -156,12 +156,15 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
     $scope.update = function ()
     {
-        var allCustomers = customersService.update($scope.currentCustomerId, {
-            names: $scope.currentCustomerNames,
-            emailAddress: $scope.currentCustomerAddress,
-            address: $scope.currentCustomerAddress,
-            phone: $scope.currentCustomerPhone
-        });
+        $scope.customerId = $stateParams.customerId;
+
+        var allCustomers = customersService.update(
+            $scope.customerId,
+            $scope.currentCustomerNames,
+            $scope.currentCustomerEmail,
+            $scope.currentCustomerAddress,
+            $scope.currentCustomerPhone
+        );
 
         $scope.customers = allCustomers;
 

@@ -131,6 +131,26 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     customersService = [];
 
+    /**
+     * Get exitsing from local storage
+     *
+     * @param key
+     * @returns {*}
+     */
+    var get = function(key){
+        return localStorage.getItem(key);
+    };
+
+    /**
+     * Create a new Customer
+     *
+     * @param names
+     * @param emailAddress
+     * @param address
+     * @param phone
+     * @returns {{}}
+     */
+
     customersService.create = function (names, emailAddress, address, phone) {
 
 
@@ -157,17 +177,21 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
     };
 
 
-    customersService.update = function ( customerId, data) {
+    customersService.update = function ( customerId, names, emailAddress, address, phone) {
 
-        data['id'] = customerId;
+       console.log( get(customersService));
 
-        $localStorage.orders = [data];
-
-        var showCustomers = $localStorage.orders;
+        customersService.push({
+            id: customerId,
+            names: names,
+            emailAddress: emailAddress,
+            address: address,
+            phone: phone
+        });
 
         alert('Customer details successfully updated');
 
-        return showCustomers;
+        return customersService;
     };
 
     customersService.remove = function (customerId) {
