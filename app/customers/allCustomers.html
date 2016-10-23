@@ -54,7 +54,7 @@
                                     <td> {{ customer.phone }} </td>
                                     <td class="button-group large-centered">
                                         <p class="success button" ui-sref="cm.viewCustomer" > View </p>
-                                        <p class="primary button" ui-sref="cm.editCustomer"> Update </p>
+                                        <p class="primary button" ui-sref="cm.editCustomer({customerId: {{customer.id}} })"> Update </p>
                                         <p class="alert button" ng-click="remove(customer.id)"> Remove </p>
                                     </td>
                                 </tr>

@@ -77,7 +77,7 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         })
 
         .state('cm.editCustomer', {
-            url: '/editCustomers',
+            url: '/editCustomers/:customerId',
             templateUrl: 'app/customers/editCustomer.html'
         })
 
@@ -105,7 +105,7 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
 
         .state('cm.editOrders', {
-            url: '/editOrders',
+            url: '/editOrders/:orderId',
             templateUrl: 'app/orders/editOrder.html'
         })
 
