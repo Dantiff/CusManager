@@ -140,18 +140,26 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
     $scope.create = function ()
     {
-        var allCustomers = customersService.create(
+       customersService.create(
             $scope.currentCustomerNames,
             $scope.currentCustomerAddress,
             $scope.currentCustomerAddress,
-            $scope.currentCustomerPhone
-        );
+            $scope.currentCustomerPhone,
 
-        $scope.customers = allCustomers;
+           function (response) {
 
-        console.log($scope.customers);
+               alert('Great! You have registered ' + $scope.username + 'as a new Customer!');
 
-        $location.path('allCustomers');
+               $location.path('allCustomers');
+           },
+           function(response){
+
+               alert('Customer with similar names already exist!');
+           }
+
+       );
+
+
 
     };
 
@@ -168,7 +176,7 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
         $scope.customers = allCustomers;
 
 
-        $location.path('allCustomers');
+        $location.path('/allCustomers');
 
     };
 

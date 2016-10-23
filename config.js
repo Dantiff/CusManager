@@ -59,12 +59,12 @@ jwt.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         })
 
         .state('allCustomers', {
-            url: '/allcustomers',
+            url: '/allCustomers',
             templateUrl: 'app/customers/allCustomers.html'
         })
 
         .state('cm.addCustomer', {
-            url: '/addcustomers',
+            url: '/addCustomers',
             templateUrl: 'app/customers/add_customer.html',
             controller: function($scope) {
                 $scope.laptops = ['Acer Aspire Series', 'Apple MacBook', 'HP ElliteBook', 'Lenovo X Series', 'Samsung', 'Chrome Book'];
