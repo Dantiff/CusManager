@@ -131,7 +131,7 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     customersService = [];
 
-    customersService.create = function (names, emailAddress, address, phone, onSuccess, onError) {
+    customersService.create = function (names, emailAddress, address, phone) {
 
 
         var id = customersService.length + 1;
@@ -143,16 +143,11 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
             emailAddress: emailAddress,
             address: address,
             phone: phone
-        })
-            .then(function(response) {
+        });
 
-                onSuccess(response);
+        alert('New customer registered');
 
-            }, function(response) {
-
-                onError(response);
-
-            });
+        return customersService;
     };
 
     customersService.showAll = function () {

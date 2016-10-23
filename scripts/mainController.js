@@ -140,26 +140,16 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
     $scope.create = function ()
     {
-       customersService.create(
+        var allCustomers = customersService.create(
             $scope.currentCustomerNames,
             $scope.currentCustomerAddress,
             $scope.currentCustomerAddress,
-            $scope.currentCustomerPhone,
+            $scope.currentCustomerPhone
+        );
 
-           function (response) {
+        $scope.customers = allCustomers;
 
-               alert('Great! You have registered ' + $scope.username + 'as a new Customer!');
-
-               $location.path('allCustomers');
-           },
-           function(response){
-
-               alert('Customer with similar names already exist!');
-           }
-
-       );
-
-
+        $location.path('/allCustomers');
 
     };
 
