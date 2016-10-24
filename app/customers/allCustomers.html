@@ -33,10 +33,10 @@
                         </div>
 
                         <div class="pull-right">
-                            <input type="text" ng-model="search.names" placeholder="Search by Name:">
+                            <input type="text" ng-model="search" placeholder="Search by Name:">
                         </div>
-                        <div ng-repeat="customer in customers | filter:search">
-                        </div>
+                        <!--<div ng-repeat="customer in customers | filter:search">-->
+                        <!--</div>-->
 
                         <hr>
 
@@ -57,7 +57,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="customer in customers">
+                                <tr ng-repeat="customer in customers | filter:search ">
                                     <td> {{ customer.id }} </td>
                                     <td> {{ customer.names }} </td>
                                     <td> {{ customer.emailAddress }} </td>

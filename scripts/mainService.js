@@ -181,7 +181,7 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
        for (var i=0; i<=customersService.length; i++){
 
-           var customer = localStorage.getItem(customersService[i]);
+           var customer = customersService[i];
 
            if (customer['id'] === customerId){
 
