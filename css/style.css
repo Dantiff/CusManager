@@ -38,6 +38,7 @@ nav {
 
 .available-orders{
     margin-left: 15px;
+    margin-right: 15px;
 }
 
 #updateOrderModal{
@@ -46,4 +47,9 @@ nav {
 
 #addOrderModal{
     float: left;
+}
+
+.tables{
+    padding-left: 18px;
+    padding-right: 18px;
 }

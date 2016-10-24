@@ -179,7 +179,16 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     customersService.update = function ( customerId, names, emailAddress, address, phone) {
 
-       console.log( get(customersService));
+       for (var i=0; i<=customersService.length; i++){
+
+           var customer = localStorage.getItem(customersService[i]);
+
+           if (customer['id'] === customerId){
+
+               localStorage.removeItem(customersService[i])
+           }
+
+       }
 
         customersService.push({
             id: customerId,
