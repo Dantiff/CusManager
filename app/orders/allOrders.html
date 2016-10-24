@@ -12,19 +12,16 @@
 
     <div ui-view>
 
-        <div class="row" ng-controller="ordersCtrl">
+        <div class="row tables" ng-controller="ordersCtrl">
             <div class="large-12 medium-12 columns">
 
 
-                <div>
+                <div class="row">
 
-                    <div class="button-group">
+                    <div class="button-group pull-left">
                         <a ui-sref="cm.addOrder">
 
                             <span class="success button"> + Add Order</span>
-                        </a>
-                        <a class="primary button radius" ng-click="showAll()">
-                            My Orders
                         </a>
                         <a class="alert button radius" ng-click="showAll()">
                             Show All Orders
@@ -40,7 +37,7 @@
                     </div>
                     <hr>
 
-                    <div style="margin-left: 5px;" class="row available-orders">
+                    <div class="row tables">
                         <div class="col-md-12">
 
                             <p>You currently have <b>{{ orders.length }}</b> orders in your profile.</p>
