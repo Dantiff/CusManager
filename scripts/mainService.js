@@ -129,7 +129,7 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     var customersService = {};
 
-    customersService = [];
+    var customers = [];
 
     /**
      * Get exitsing from local storage
@@ -154,10 +154,10 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
     customersService.create = function (names, emailAddress, address, phone) {
 
 
-        var id = customersService.length + 1;
+        var id = customers.length + 1;
 
 
-        customersService.push({
+        customers.push({
             id: id,
             names: names,
             emailAddress: emailAddress,
@@ -166,31 +166,36 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
         });
 
         alert('New customer registered');
+        console.log(customers);
 
-        return customersService;
+        return customers;
     };
 
     customersService.showAll = function () {
 
-        return customersService;
+        return customers;
 
     };
 
 
     customersService.update = function ( customerId, names, emailAddress, address, phone) {
 
-       for (var i=0; i<=customersService.length; i++){
+       for (var i=0; i<=customers.length; i++){
 
-           var customer = customersService[i];
+           var customer = get(customers);
+
+           console.log(customer);
 
            if (customer['id'] === customerId){
 
-               localStorage.removeItem(customersService[i])
+               localStorage.removeItem(customers[i])
            }
 
        }
 
-        customersService.push({
+        console.log(customers);
+
+        customers.push({
             id: customerId,
             names: names,
             emailAddress: emailAddress,
@@ -200,12 +205,16 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
         alert('Customer details successfully updated');
 
-        return customersService;
+        console.log(customers);
+
+        return customers;
     };
 
-    customersService.remove = function (customerId) {
+    customersService.remove = function (customer) {
 
-        $localStorage.$reset('customers');
+        var index = customers.indexOf(customer);
+
+        customers.splice(index, 1);
 
         alert('Customer successfully removed');
 
@@ -228,13 +237,13 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
     var ordersService = {};
 
-    ordersService = [];
+    var orders = [];
 
     ordersService.create = function (title, auth_name, description, amount) {
 
-        var id = ordersService.length + 1;
+        var id = orders.length + 1;
 
-        ordersService.push(
+        orders.push(
             {
                 id: id,
                 title: title,
@@ -251,27 +260,47 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
     ordersService.showAll = function () {
 
-        return ordersService;
+        return orders;
 
     };
 
 
-    ordersService.update = function (orderId, data) {
+    ordersService.update = function (orderId, title, auth_name, description, amount) {
 
-        data['id'] = orderId;
+        for (var i=0; i<=orders.length; i++){
 
-        $localStorage.orders = [data];
+            var order = get(orders);
 
-        var showOrders = $localStorage.orders;
+            console.log(order);
+
+            if (order['id'] === customerId){
+
+                localStorage.removeItem(orders[i])
+            }
+
+        }
+
+        console.log(customers);
+
+
+        orders.push(
+            {
+                id: id,
+                title: title,
+                auth_name: auth_name,
+                description: description,
+                amount: amount
+            }
+        );
 
         alert('Order details successfully updated');
 
-        return showOrders;
+        return orders;
     };
 
-    ordersService.remove = function (orderId) {
+    ordersService.remove = function (order) {
 
-       $localStorage.$reset('orders');
+       localStorage.removeItem(order);
 
         alert('Order successfully removed');
 

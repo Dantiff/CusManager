@@ -184,11 +184,11 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
 
 
-    $scope.remove = function (id) {
+    $scope.remove = function (customer) {
 
         if(confirm('Are you sure to remove this customer from the system?')){
 
-            customersService.remove(id);
+            customersService.remove(customer);
 
             $scope.showAll();
         }
@@ -253,11 +253,11 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
         };
 
 
-    $scope.remove = function (id) {
+    $scope.remove = function (order) {
 
         if(confirm('Are you sure to remove this order from your list?')){
 
-            ordersService.remove(id);
+            ordersService.remove(order);
 
             $scope.showAll();
         }
