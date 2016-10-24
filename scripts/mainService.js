@@ -300,7 +300,11 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
     ordersService.remove = function (order) {
 
-       localStorage.removeItem(order);
+
+        var index = orders.indexOf(order);
+
+        orders.splice(index, 1);
+
 
         alert('Order successfully removed');
 
