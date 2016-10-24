@@ -30,8 +30,14 @@
                             Show All Orders
                         </a>
                     </div>
-                    <div class="clearfix"></div>
 
+                    <div>
+                        <button type="button" class="success button pull-right"> Search</button>
+                    </div>
+
+                    <div class="pull-right">
+                        <input type="text" ng-model="search" placeholder="Search Order:">
+                    </div>
                     <hr>
 
                     <div style="margin-left: 5px;" class="row available-orders">
@@ -50,7 +56,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="order in orders">
+                                <tr ng-repeat="order in orders | filter:search">
                                     <td> {{ order.title }} </td>
                                     <td> {{ order.auth_name }} </td>
                                     <td> {{ order.description }} </td>
@@ -58,7 +64,7 @@
                                     <td class="button-group large-centered">
                                         <p class="success button" ui-sref="cm.viewOrder" > View </p>
                                         <p class="primary button" ui-sref="cm.editOrders({ orderId: {{order.id}})"> Update </p>
-                                        <p class="alert button" ng-click="remove(order.id)"> Remove </p>
+                                        <p class="alert button" ng-click="remove(order)"> Remove </p>
                                     </td>
                                 </tr>
                                 </tbody>
