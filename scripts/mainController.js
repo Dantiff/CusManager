@@ -135,7 +135,7 @@ jwt.value('pageSize', 4);
 /**
  * Customers Controllers: All Customers Page
  */
-jwt.controller('allCustomersCtrl', ['$scope', '$location', 'auth', 'customersService',  function ($scope, $location, auth, customersService) {
+jwt.controller('allCustomersCtrl', ['$scope', 'customersService',  function ($scope, customersService) {
 
         $scope.customers = customersService.showAll();
 
@@ -145,9 +145,11 @@ jwt.controller('allCustomersCtrl', ['$scope', '$location', 'auth', 'customersSer
 /**
  * Customers Controllers: Customers Profile Page
  */
-jwt.controller('allCustomersCtrl', ['$scope', '$location', 'auth', 'customersService',  function ($scope, $location, auth, customersService) {
+jwt.controller('customerProfileCtrl', ['$scope', 'customersService',  function ($scope, customersService) {
 
-        $scope.customers = customersService.getProfile($stateParams.customerId);
+        $scope.customerId = $stateParams.customerId;
+
+        $scope.customer = customersService.getProfile($scope.customerId);
 
 
 }]);
