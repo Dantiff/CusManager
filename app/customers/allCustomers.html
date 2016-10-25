@@ -62,6 +62,7 @@
                                     <td> {{ customer.phone }} </td>
                                     <td class="button-group">
                                         <p class="success button" ui-sref="cm.viewProfile( {customerId: {{customer.id}} })" > Profile </p>
+                                        <p class="primary button" ui-sref="cm.addOrder( {customerId: {{customer.id}} })" > Add Orders </p>
                                         <p class="primary button" ui-sref="cm.editCustomer({customerId: {{customer.id}} })"> Update </p>
                                         <p class="alert button" ng-click="remove(customer)"> Remove </p>
                                     </td>

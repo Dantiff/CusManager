@@ -145,7 +145,7 @@ jwt.controller('allCustomersCtrl', ['$scope', 'customersService',  function ($sc
 /**
  * Customers Controllers: Customers Profile Page
  */
-jwt.controller('customerProfileCtrl', ['$scope', 'customersService',  function ($scope, customersService) {
+jwt.controller('customerProfileCtrl', ['$scope', 'customersService', '$stateParams',  function ($scope, customersService, $stateParams) {
 
         $scope.customerId = $stateParams.customerId;
 
@@ -223,13 +223,16 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 /**
  * Orders Controller
  */
-jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', function ($scope, $location, auth, ordersService) {
+jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', '$stateParams', function ($scope, $location, auth, ordersService, $stateParams) {
 
     $scope.required = true;
 
     $scope.create = function ()
     {
+        $scope.customerId = $stateParams.customerId;
+
         $scope.orders  = ordersService.create(
+            $scope.customerId,
             $scope.currentOrderTitle,
             $scope.currentOrderAuthName,
             $scope.currentOrderDescription,
@@ -252,12 +255,16 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
 
     $scope.update = function ()
         {
-            $scope.orders  = ordersService.update($scope.currentOrderId, {
-                title: $scope.currentOrderTitle,
-                auth_name: $scope.currentOrderAuthName,
-                description: $scope.currentOrderDescription,
-                amount: $scope.currentOrderAmount
-            });
+            $scope.customerId = $stateParams.customerId;
+
+            $scope.orders  = ordersService.update(
+                $scope.currentOrderId,
+                $scope.customerId,
+                $scope.currentOrderTitle,
+                $scope.currentOrderAuthName,
+                $scope.currentOrderDescription,
+                $scope.currentOrderAmount
+            );
 
             $location.path('allOrders');
 

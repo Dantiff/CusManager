@@ -44,7 +44,8 @@
                             <table>
                                 <thead>
                                 <tr>
-                                    <td> Order Title</td>
+                                    <td> Customer Code </td>
+                                    <td> Order Title </td>
                                     <td> Order By: </td>
                                     <td> Description </td>
                                     <td> Amount </td>
@@ -54,12 +55,14 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="order in orders | filter:search">
+
+                                    <td> {{ order.customerId }} </td>
                                     <td> {{ order.title }} </td>
                                     <td> {{ order.auth_name }} </td>
                                     <td> {{ order.description }} </td>
                                     <td> {{ order.amount }} </td>
                                     <td class="button-group large-centered">
-                                        <p class="primary button" ui-sref="cm.editOrders({ orderId: {{order.id}})"> Update </p>
+                                        <p class="primary button" ui-sref="cm.editOrders({ orderId: {{order.id}}, customerId: {{ order.customerId }} })"> Update </p>
                                         <p class="alert button" ng-click="remove(order)"> Remove </p>
                                     </td>
                                 </tr>

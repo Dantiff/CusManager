@@ -260,13 +260,14 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
     var orders = [];
 
-    ordersService.create = function (title, auth_name, description, amount) {
+    ordersService.create = function (customerId, title, auth_name, description, amount) {
 
         var id = orders.length + 1;
 
         orders.push(
             {
                 id: id,
+                customerId: customerId,
                 title: title,
                 auth_name: auth_name,
                 description: description,
@@ -286,7 +287,7 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
     };
 
 
-    ordersService.update = function (orderId, title, auth_name, description, amount) {
+    ordersService.update = function (orderId, customerId, title, auth_name, description, amount) {
 
         //Find the Order to Edit
         var order = {};
@@ -310,6 +311,7 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
         orders.push(
             {
                 id: id,
+                customerId: customerId,
                 title: title,
                 auth_name: auth_name,
                 description: description,
