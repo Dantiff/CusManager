@@ -133,41 +133,34 @@ jwt.value('pageSize', 4);
 
 
 /**
- * Customers Controller
+ * Customers Controllers: All Customers Page
+ */
+jwt.controller('allCustomersCtrl', ['$scope', '$location', 'auth', 'customersService',  function ($scope, $location, auth, customersService) {
+
+
+    $scope.showAll = function () {
+
+        $scope.customers = customersService.showAll();
+
+    };
+
+}]);
+
+
+/**
+ * Customers Controllers
  */
 jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersService', '$stateParams', function ($scope, $location, auth, customersService, $stateParams) {
 
 
     $scope.create = function ()
     {
-        var allCustomers = customersService.create(
+        $scope.customers = customersService.create(
             $scope.currentCustomerNames,
             $scope.currentCustomerEmail,
             $scope.currentCustomerAddress,
             $scope.currentCustomerPhone
         );
-
-        $scope.customers = allCustomers;
-
-        $location.path('/allCustomers');
-
-    };
-
-
-    $scope.update = function ()
-    {
-        $scope.customerId = $stateParams.customerId;
-
-        var allCustomers = customersService.update(
-            $scope.customerId,
-            $scope.currentCustomerNames,
-            $scope.currentCustomerEmail,
-            $scope.currentCustomerAddress,
-            $scope.currentCustomerPhone
-        );
-
-        $scope.customers = allCustomers;
-
 
         $location.path('/allCustomers');
 
@@ -176,12 +169,25 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
     $scope.showAll = function () {
 
-        var allCustomers = customersService.showAll();
-
-        $scope.customers = allCustomers;
+        $scope.customers = customersService.showAll();
 
     };
 
+    $scope.update = function ()
+    {
+        $scope.customerId = $stateParams.customerId;
+
+        $scope.customers = customersService.update(
+            $scope.customerId,
+            $scope.currentCustomerNames,
+            $scope.currentCustomerEmail,
+            $scope.currentCustomerAddress,
+            $scope.currentCustomerPhone
+        );
+
+        $location.path('/allCustomers');
+
+    };
 
 
     $scope.remove = function (customer) {
@@ -202,6 +208,8 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
 
 
 
+
+
 /**
  * Orders Controller
  */
@@ -211,14 +219,12 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
 
     $scope.create = function ()
     {
-       var allOrders = ordersService.create(
+        $scope.orders  = ordersService.create(
             $scope.currentOrderTitle,
             $scope.currentOrderAuthName,
             $scope.currentOrderDescription,
             $scope.currentOrderAmount
         );
-
-        $scope.orders = allOrders;
 
         $location.path('allOrders');
 
@@ -229,24 +235,19 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', fu
 
     $scope.showAll = function () {
 
-        var allOrders = ordersService.showAll();
-
-        $scope.orders = allOrders;
-
+        $scope.orders  = ordersService.showAll();
 
     };
 
 
     $scope.update = function ()
         {
-            var allOrders = ordersService.update($scope.currentOrderId, {
+            $scope.orders  = ordersService.update($scope.currentOrderId, {
                 title: $scope.currentOrderTitle,
                 auth_name: $scope.currentOrderAuthName,
                 description: $scope.currentOrderDescription,
                 amount: $scope.currentOrderAmount
             });
-
-            $scope.orders = allOrders;
 
             $location.path('allOrders');
 

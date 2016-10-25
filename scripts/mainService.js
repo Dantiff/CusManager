@@ -177,24 +177,48 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     };
 
+    customers.updateCustomer = function(customerData, firstname, lastname, email, phone)
+    {
+        angular.forEach(customers, function (value, key)
+        {
+            if (value == customerData)
+            {
+                var index = customers.indexOf(customerData);
+                customers.splice(index, 1);
+
+                customers.push({
+                    id: customerData['id'],
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                    phone: phone
+                });
+            }
+        });
+    }
+
 
     customersService.update = function ( customerId, names, emailAddress, address, phone) {
 
-       for (var i=0; i<=customers.length; i++){
+        //Find the customer to edit
+        var customer = {};
 
-           var customer = get(customers);
+        customer = [];
 
-           console.log(customer);
+        angular.forEach(customers, function (value)
+        {
+            if (value['id'] == customerId)
+            {
+                customer = value;
+            }
+        });
 
-           if (customer['id'] === customerId){
+        //Remove Customer
+        var index = customers.indexOf(customer);
 
-               localStorage.removeItem(customers[i])
-           }
+        customers.splice(index, 1);
 
-       }
-
-        console.log(customers);
-
+        //Replace Customer Data
         customers.push({
             id: customerId,
             names: names,
@@ -204,9 +228,7 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
         });
 
         alert('Customer details successfully updated');
-
-        console.log(customers);
-
+        
         return customers;
     };
 
