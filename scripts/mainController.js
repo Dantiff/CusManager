@@ -162,6 +162,7 @@ jwt.controller('customerProfileCtrl', ['$scope', 'customersService', '$statePara
  */
 jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersService', '$stateParams', function ($scope, $location, auth, customersService, $stateParams) {
 
+    var scope = {};
 
     $scope.create = function ()
     {
@@ -210,7 +211,7 @@ jwt.controller('customersCtrl', ['$scope', '$location', 'auth', 'customersServic
         }
     };
 
-
+    scope.customers = customersService.showAll();
 
 
 }]);
@@ -281,85 +282,6 @@ jwt.controller('ordersCtrl', ['$scope', '$location', 'auth', 'ordersService', '$
         }
     };
 
-
-
-
-    //
-    // $scope.load = function(orderId){
-    //
-    //     ordersService.getById(orderId, function(response){
-    //
-    //         $scope.currentOrderId = response.order.id;
-    //         $scope.currentOrderTitle = response.order.title;
-    //         $scope.currentOrderAuthName = response.order.auth_name;
-    //         $scope.currentOrderDescription = response.order.description;
-    //         $scope.currentOrderAmount = response.order.amount;
-    //
-    //     }, function(){
-    //
-    //         alert('Some errors occurred while communicating with the service. Please try again later.');
-    //
-    //     });
-    //
-    // };
-    //
-    //
-    //
-    // $scope.update = function()
-    // {
-    //     $scope.update(
-    //         $scope.currentOrderId,
-    //         {
-    //             title: $scope.currentOrderTitle,
-    //             auth_name: $scope.currentOrderAuthName,
-    //             description: $scope.currentOrderDescription,
-    //             Amount: $scope.currentOrderAmount
-    //         }, function (response) {
-    //
-    //             $scope.currentOrderReset();
-    //             $scope.refresh();
-    //
-    //         }, function(response){
-    //
-    //             alert('Some errors occurred while communicating with the service. Please try again later.');
-    //         }
-    //     );
-    //
-    //     alert('You have updated order details');
-    // };
-    //
-    //
-    // $scope.remove = function () {
-    //
-    //     if(confirm('Are you sure to remove this order from your list?')){
-    //         ordersService.remove(orderId, function(){
-    //
-    //             alert('Order removed successfully.');
-    //
-    //         }, function(){
-    //
-    //             alert('Some errors occurred while communicating with the service. Please try again later.');
-    //
-    //         });
-    //     }
-    // };
-    //
-    //
-    // $scope.currentOrderReset = function(){
-    //     $scope.currentOrderTitle = '';
-    //     $scope.currentOrderAuthName = '';
-    //     $scope.currentOrderDescription = '';
-    //     $scope.currentOrderAmount= '';
-    // }
-    //
-    // if(!auth.checkIfLoggedIn())
-    //     $location.path('/login');
-    //
-    // $scope.orders = [];
-    //
-    // $scope.currentOrderReset();
-    // $scope.refresh();
-    //
 
 }]);
 

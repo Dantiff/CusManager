@@ -100,26 +100,6 @@ jwt.factory('auth', ['$http', 'API', '$window', function($http, API, $window){
 }]);
 
 
-//
-// var customersService = {};
-//
-// customersService = [];
-//
-// customersService.create = function (data) {
-//
-//     var id = (customersService.length)+1;
-//
-//     data['id'] = id++;
-//
-//     $localStorage.orders = [data];
-//
-//     var showCustomers = $localStorage.orders;
-//
-//     alert('New customer registered');
-//
-//     return showCustomers;
-// };
-
 /**
  * Customers Service
  */
@@ -310,7 +290,7 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
         //Replace Order Data
         orders.push(
             {
-                id: id,
+                id: orderId,
                 customerId: customerId,
                 title: title,
                 auth_name: auth_name,
@@ -344,102 +324,3 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 }]);
 
 
-
-
-//
-// /**
-//  * Orders service
-//  */
-// jwt.factory('ordersService', ['auth', '$window', function (auth, $window) {
-//
-//
-//     ordersService.create = function (data, onSuccess, onError) {
-//
-//         var orders = {};
-//
-//         orders.push(data);
-//
-//         $window.localStorage.setItem('orders', JSON.stringify(orders))
-//
-//             .then(function (response) {
-//
-//                 onSuccess(response);
-//
-//             }, function (response) {
-//
-//                 onError(response);
-//
-//             });
-//     };
-
-    // ordersService.getAll = function (onSuccess, onError) {
-    //
-    //     var result = JSON.parse($window.localStorage.getItem("orders")).getList()
-    //
-    //         .then(function (response) {
-    //
-    //             onSuccess(response);
-    //
-    //         }, function (response) {
-    //
-    //             onError(response);
-    //         });
-    //
-    // };
-    //
-    // ordersService.getById = function (orderId, onSuccess, onError) {
-    //
-    //     $window.localStorage.getItem('orders').get()
-    //
-    //         .then(function (response) {
-    //
-    //             onSuccess(response);
-    //
-    //         }, function (response) {
-    //
-    //             onError(response);
-    //
-    //         });
-    //
-    // };
-    //
-    //
-    // ordersService.update = function  (data, orderId, onSuccess, onError) {
-    //
-    //     var orders = {};
-    //
-    //     orders.push(data);
-    //
-    //     $window.localStorage.setItem('orders', JSON.stringify(orders)).custom(data, orderId)
-    //
-    //         .then(function (response) {
-    //
-    //             onSuccess(response);
-    //
-    //         }, function (response) {
-    //
-    //             onError(response);
-    //
-    //         });
-    // };
-    //
-    // ordersService.remove = function (orderId, onSuccess, onError) {
-    //
-    //     window.localStorage.one('orders', orderId).remove()
-    //
-    //         .then(function (response) {
-    //
-    //             onSuccess(response);
-    //
-    //         }, function (response) {
-    //
-    //             onError(response);
-    //
-    //         });
-    //
-    // };
-    //
-    //
-    // localStorageService.setDefaultHeaders({ 'Authorization' : 'Bearer ' + auth.getCurrentToken() });
-
-// }]);
