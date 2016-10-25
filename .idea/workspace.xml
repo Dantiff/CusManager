@@ -66,9 +66,11 @@
       <file leaf-file-name="viewProfile.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/customers/viewProfile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="45">
+              <caret line="3" column="61" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -386,12 +388,12 @@
       <workItem from="1477310725902" duration="90000" />
       <workItem from="1477311071765" duration="1935000" />
       <workItem from="1477359568241" duration="5328000" />
-      <workItem from="1477384759839" duration="2207000" />
+      <workItem from="1477384759839" duration="2298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127025000" />
+    <option name="totallyTimeSpent" value="127116000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1014" height="952" extended-state="0" />
@@ -757,9 +759,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/customers/viewProfile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="45">
+          <caret line="3" column="61" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
