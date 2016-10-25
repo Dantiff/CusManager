@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f75c71d2-f8b0-4a2f-8508-359ad0253aa0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/customers/editCustomer.html" afterPath="$PROJECT_DIR$/app/customers/editCustomer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/mainController.js" afterPath="$PROJECT_DIR$/scripts/mainController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/mainService.js" afterPath="$PROJECT_DIR$/scripts/mainService.js" />
     </list>
     <ignored path="Security.iws" />
@@ -39,9 +36,12 @@
       <file leaf-file-name="mainService.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/mainService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-544">
-              <caret line="230" column="8" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="641">
+              <caret line="304" column="22" selection-start-line="304" selection-start-column="22" selection-end-line="304" selection-end-column="22" />
+              <folding>
+                <marker date="1477360992000" expanded="true" signature="2506:5015" ph="{...}" />
+                <marker date="1477360992000" expanded="true" signature="4091:4782" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -355,12 +355,12 @@
       <workItem from="1477228460670" duration="13980000" />
       <workItem from="1477310725902" duration="90000" />
       <workItem from="1477311071765" duration="1935000" />
-      <workItem from="1477359568241" duration="1158000" />
+      <workItem from="1477359568241" duration="1324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120648000" />
+    <option name="totallyTimeSpent" value="120814000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1014" height="952" extended-state="0" />
@@ -726,9 +726,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/mainService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="230" column="8" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="641">
+          <caret line="304" column="22" selection-start-line="304" selection-start-column="22" selection-end-line="304" selection-end-column="22" />
+          <folding>
+            <marker date="1477360992000" expanded="true" signature="2506:5015" ph="{...}" />
+            <marker date="1477360992000" expanded="true" signature="4091:4782" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

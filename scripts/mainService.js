@@ -228,7 +228,7 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
         });
 
         alert('Customer details successfully updated');
-        
+
         return customers;
     };
 
@@ -289,22 +289,25 @@ jwt.factory('ordersService', ['auth', '$localStorage', function(auth, $localStor
 
     ordersService.update = function (orderId, title, auth_name, description, amount) {
 
-        for (var i=0; i<=orders.length; i++){
+        //Find the Order to Edit
+        var order = {};
 
-            var order = get(orders);
+        order = [];
 
-            console.log(order);
-
-            if (order['id'] === customerId){
-
-                localStorage.removeItem(orders[i])
+        angular.forEach(orders, function (value)
+        {
+            if (value['id'] == orderId)
+            {
+                order = value;
             }
+        });
 
-        }
+        //Remove Order
+        var index = orders.indexOf(order);
 
-        console.log(customers);
+        orders.splice(index, 1);
 
-
+        //Replace Order Data
         orders.push(
             {
                 id: id,
