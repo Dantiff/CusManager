@@ -177,27 +177,6 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
     };
 
-    customers.updateCustomer = function(customerData, firstname, lastname, email, phone)
-    {
-        angular.forEach(customers, function (value, key)
-        {
-            if (value == customerData)
-            {
-                var index = customers.indexOf(customerData);
-                customers.splice(index, 1);
-
-                customers.push({
-                    id: customerData['id'],
-                    firstname: firstname,
-                    lastname: lastname,
-                    email: email,
-                    phone: phone
-                });
-            }
-        });
-    }
-
-
     customersService.update = function ( customerId, names, emailAddress, address, phone) {
 
         //Find the customer to edit
@@ -231,6 +210,26 @@ jwt.factory('customersService', ['auth', '$localStorage', function(auth, $localS
 
         return customers;
     };
+
+
+    customersService.getProfile = function ( customerId) {
+
+        //Find the customer by id
+        var customer = {};
+
+        customer = [];
+
+        angular.forEach(customers, function (value)
+        {
+            if (value['id'] == customerId)
+            {
+                customer = value;
+            }
+        });
+
+        return customer;
+    };
+
 
     customersService.remove = function (customer) {
 

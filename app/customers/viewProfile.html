@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<div class="row" ng-controller="customerDataCtrl">
+
+    <div class="pull-left">
+        <ul class="li-none">
+
+            <h3> Customer Profile</h3>
+
+            <li> Code: {{ customer.id }} </li>
+            <li> Names:    {{ customer.names }} </li>
+            <li> Email Address: {{ customer.emailAddress }} </li>
+            <li> Residence: {{ customer.address }} </li>
+            <li> Mobile:    {{ customer.phone }} </li>
+
+        </ul>
+    </div>
+    <div class="pull-right">
+        <h3> Customer Orders </h3>
+    </div>
+
+</div>

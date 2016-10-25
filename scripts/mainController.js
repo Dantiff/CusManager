@@ -137,14 +137,22 @@ jwt.value('pageSize', 4);
  */
 jwt.controller('allCustomersCtrl', ['$scope', '$location', 'auth', 'customersService',  function ($scope, $location, auth, customersService) {
 
-
-    $scope.showAll = function () {
-
         $scope.customers = customersService.showAll();
 
-    };
+}]);
+
+
+/**
+ * Customers Controllers: Customers Profile Page
+ */
+jwt.controller('allCustomersCtrl', ['$scope', '$location', 'auth', 'customersService',  function ($scope, $location, auth, customersService) {
+
+        $scope.customers = customersService.getProfile($stateParams.customerId);
+
 
 }]);
+
+
 
 
 /**

@@ -59,7 +59,6 @@
                                     <td> {{ order.description }} </td>
                                     <td> {{ order.amount }} </td>
                                     <td class="button-group large-centered">
-                                        <p class="success button" ui-sref="cm.viewOrder" > View </p>
                                         <p class="primary button" ui-sref="cm.editOrders({ orderId: {{order.id}})"> Update </p>
                                         <p class="alert button" ng-click="remove(order)"> Remove </p>
                                     </td>
