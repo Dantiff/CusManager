@@ -5,15 +5,29 @@
 
         <h3> Customer Profile</h3>
 
-        <ul class="li-none">
+        <table>
+            <tr>
+                <td> Code:  </td>
+                <td> {{ customer.id }} </td>
+            </tr>
+            <tr>
+                <td> Names:  </td>
+                <td>{{ customer.names }}  </td>
+            </tr>
+            <tr>
+                <td> Email Address:  </td>
+                <td> {{ customer.emailAddress }} </td>
+            </tr>
+            <tr>
+                <td>Residence:  </td>
+                <td>{{ customer.address }}  </td>
+            </tr>
+        </table>
+        <tr>
+            <td>Mobile:      </td>
+            <td> {{ customer.phone }} </td>
+        </tr>
 
-            <li> Code: {{ customer.id }} </li>
-            <li> Names:    {{ customer.names }} </li>
-            <li> Email Address: {{ customer.emailAddress }} </li>
-            <li> Residence: {{ customer.address }} </li>
-            <li> Mobile:    {{ customer.phone }} </li>
-
-        </ul>
     </div>
     <div class="pull-right cus-profile-div">
         <h3> Customer Orders </h3>
